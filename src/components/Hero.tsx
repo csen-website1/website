@@ -2,13 +2,14 @@ import React from "react";
 import MaxWidthWraper from "./MaxWidthWraper";
 import Image from "next/image";
 import AnimatedText from "./AnimatedText";
+import { Button } from "./ui/button";
 
 type Props = {};
 
 function Hero({}: Props) {
   return (
-    <div className="min-h-screen bg-image">
-      <div className="min-h-screen glass effect">
+    <div className="min-h-screen h-full ">
+      <div className="min-h-screen">
         <MaxWidthWraper classNme="h-full">
           <div className="flex flex-col md:flex-row items-center h-full z-10 relative ">
             <div className="flex flex-col  basis-full my-4 sm:basis-3/6 sm:mt-20  sm:px-0 px-5 mt-24">
@@ -37,6 +38,9 @@ function Hero({}: Props) {
                 parasismiques, contribuant à la sécurité et à la durabilité des
                 projets de construction en Algérie.
               </p>
+              <div className="mt-10 flex flex-col sm:flex-row items-center sm:space-x-4">
+                <Button variant={"default"}>Get Started</Button>
+              </div>
             </div>
             <div className="basis-full sm:basis-3/6">
               <Image

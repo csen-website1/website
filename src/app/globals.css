@@ -2,14 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg-image {
-  background-image: url('/images/fond-hd.svg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  backdrop-filter: blur(20px);
 
-}
 
 .glass {
   background: rgba(255, 255, 255, 0.292);
@@ -17,6 +10,21 @@
   backdrop-filter: blur(3.7px);
   -webkit-backdrop-filter: blur(3.7px);
   padding: 30px;
+
+}
+
+image-bg {
+  background: url(/public/images/CircuitPrimary.svg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 }
 

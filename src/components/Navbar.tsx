@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import * as React from "react";
+import { useState } from "react";
 import MaxWidthWraper from "./MaxWidthWraper";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,11 +9,16 @@ import { IoMdClose } from "react-icons/io";
 import { buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { useOnClickOutside } from "@/hooks/use-on-click-outside";
 
 interface Props {}
 
 function Navbar({}: Props) {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const navRef = React.useRef<any>(null);
+  useOnClickOutside(navRef, () => {
+    setIsMenuOpen(false);
+  });
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -36,7 +42,7 @@ function Navbar({}: Props) {
     <div className="relative bg-slate-700 z-50">
       <div className="fixed inset-x-0 top-5 h-16  text-white">
         <MaxWidthWraper>
-          <div className="mx-auto px-5 h-16 flex items-center justify-between rounded-xl shadow-lg backdrop-blur-10 bg-primary/40">
+          <div className="mx-auto px-5 h-16 flex items-center justify-between rounded-xl shadow-lg backdrop-blur-md bg-primary/40">
             <Link href="/">
               <Image
                 src="/images/logoNav.png"
@@ -53,11 +59,16 @@ function Navbar({}: Props) {
               )}
             </button>
             {isMenuOpen && (
-              <ul className="absolute flex flex-col top-20 right-0 bg-slate-50 p-5 gap-5 items-center">
+              <ul
+                ref={navRef}
+                className="absolute flex flex-col top-20 right-0 bg-slate-50 p-5 gap-5 items-center"
+              >
                 {links.map((link) => (
-                  <motion.li 
+                  <motion.li
                     whileTap={{ scale: 0.9 }}
-                  className="inline-block mx-auto " key={link.name}>
+                    className="inline-block mx-auto "
+                    key={link.name}
+                  >
                     <Link
                       className={cn(
                         buttonVariants({ variant: "ghost" }),
