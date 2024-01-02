@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import {
@@ -10,6 +11,8 @@ import {
 } from "react-icons/gr";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import Image from "next/image";
+import { Separator } from "@radix-ui/react-separator";
 
 type Props = {};
 
@@ -31,8 +34,9 @@ const Footer = (props: Props) => {
         <div className="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
           <Link href={"/"} className="text-2xl text-white">
             {/* TODO Logo */}
+            <Image src="/csen_logo_w.png" width={100} height={26} alt="logo" />
           </Link>
-          <p className="mt-2 text-xs text-justify text-gray-400">
+          <p className="mt-2 text-xs text-justify text-gray-300">
             {` Chez CSEN, notre passion pour l'innovation en génie civil se traduit
             par une solution d'analyse parasismique avancée, conforme aux normes
             Algériennes. Ensemble, construisons l'avenir avec des structures
@@ -57,7 +61,7 @@ const Footer = (props: Props) => {
             </Link>
           </div>
         </div>
-        <div className="justify-between w-full mt-4 text-center lg:flex">
+        <div className="justify-around w-full mt-4 text-center lg:flex">
           <div className="w-full px-4 lg:w-1/3 md:w-1/2">
             <h2 className="mb-2 font-bold tracking-widest text-gray-100">
               Quick Links
@@ -85,33 +89,8 @@ const Footer = (props: Props) => {
               </li>
             </ul>
           </div>
-          <div className="w-full px-4 lg:w-1/3 md:w-1/2">
-            <h2 className="mb-2 font-bold tracking-widest text-gray-100">
-              Quick Links
-            </h2>
-            <ul className="mb-8 space-y-2 text-sm list-none">
-              <li>
-                <Link href={"/"} className="text-gray-300">
-                  Link 1
-                </Link>
-              </li>
-              <li>
-                <Link href={"/"} className="text-gray-300">
-                  Link 2
-                </Link>
-              </li>
-              <li>
-                <Link href={"/"} className="text-gray-300">
-                  Link 3
-                </Link>
-              </li>
-              <li>
-                <Link href={"/"} className="text-gray-300">
-                  Link 4
-                </Link>
-              </li>
-            </ul>
-          </div>
+
+          <Separator orientation="vertical" className=" w-[1px] bg-white/50" />
           <div className="w-full px-4 lg:w-1/3 md:w-1/2">
             <h2 className="mb-2 font-bold tracking-widest text-gray-100">
               Quick Links

@@ -78,7 +78,7 @@ const RpaSection = (props: Props) => {
             {`Logiciel d’analyse des structures en Béton Armé selon les DTR
             Algérien Travail en collaboration avec CSI-ETABS`}
           </h2>
-          <p className="text-center font-light">
+          <p id="plugin" className="text-center font-light">
             {` Avec notre solution qui est basée sur la numérisation des DTR et
             l'automatisation du calcul nous pouvons à la fois augmenter la
             croissance de la productive ainsi qu’arrivé à une étude parasismique

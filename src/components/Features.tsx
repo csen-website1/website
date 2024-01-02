@@ -55,7 +55,10 @@ function Features({}: Props) {
   return (
     <div>
       <MaxWidthWraper>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-6">
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-6 -scroll-my-48"
+          id="download"
+        >
           {features.map((feature, index) =>
             CardItem({
               title: feature.title,
@@ -65,7 +68,7 @@ function Features({}: Props) {
             })
           )}
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 m-6 shadow-lg ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 m-6 shadow-lg  ">
           <Link href={"/"} className={buttonVariants()}>
             <IoMdDownload className="inline-block mr-2 animate-bounce" /> RPA
             Plug-in

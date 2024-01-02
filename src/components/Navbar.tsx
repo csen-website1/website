@@ -27,30 +27,28 @@ function Navbar({}: Props) {
   const links = [
     {
       name: "RPA Plug-in",
-      href: "#",
+      href: "#plugin",
     },
     {
       name: "Télécharger",
-      href: "#",
+      href: "#download",
     },
     {
       name: "Contacte",
-      href: "#",
+      href: "/form",
     },
   ];
   return (
     <div className="relative  z-50">
       <div className="fixed inset-x-0 top-5 h-16  text-white">
         <MaxWidthWraper>
-          <div className="mx-auto px-5 h-16 flex items-center justify-between rounded-xl shadow-lg backdrop-blur-md bg-primary/40 bg-blend-screen">
-            <Link href="/">
-              <Image
-                src="/images/logoNav.png"
-                width={100}
-                height={100}
-                alt="logo"
-              />
-            </Link>
+          <div className="mx-auto px-5 h-16 flex items-center justify-between rounded-xl shadow-lg backdrop-blur-md bg-slate-100/30 bg-blend-difference">
+            <div className="w-[100px] h-[26px] relative">
+              <Link href="/">
+                <Image src="/csen_logo_b.png" fill alt="logo" />
+              </Link>
+            </div>
+
             <button onClick={toggleMenu}>
               {isMenuOpen ? (
                 <IoMdClose className="block sm:hidden" />

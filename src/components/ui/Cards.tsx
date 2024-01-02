@@ -27,12 +27,15 @@ export default function CardItem({
 }: Props) {
   return (
     <Card
+      key={title}
       className={cn(
         "lg:max-w-md w-full min-h-[350px] text-center mx-auto shadow-2xl bg-secondary ",
         styling
       )}
     >
-      {icon && <div className="flex justify-center items-center mt-3">{icon}</div>}
+      {icon && (
+        <div className="flex justify-center items-center mt-3">{icon}</div>
+      )}
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         {description && <CardDescription>{description}</CardDescription>}

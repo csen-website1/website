@@ -10,15 +10,15 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "CSEN",
   description: "Company of Structural Engineering & Numerical",
+  icons: "/favicon.ico",
 };
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full  ">
+    <html lang="en" className="h-full scroll-smooth ">
       <body
         className={cn(
           "relative h-full font-sans antialiased overflow-x-hidden",
