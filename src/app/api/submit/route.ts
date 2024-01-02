@@ -38,14 +38,14 @@ import { NextRequest, NextResponse } from "next/server";
 //   }
 // }
 
-export async function GET(req: NextRequest, res: NextResponse) {
-  // ...
+// export async function GET(req: NextRequest, res: NextResponse) {
+//   // ...
 
-  try {
-    // await connectToDatabase();
-    // const users = await User.find({});
-    res.json();
-  } catch (error) {
-    console.log(error);
-  }
-}
+//   try {
+//     // await connectToDatabase();
+//     // const users = await User.find({});
+//     res.json();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
