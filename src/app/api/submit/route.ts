@@ -1,7 +1,7 @@
 import connectToDatabase from "@/lib/db";
 
-import type { NextApiRequest, NextApiResponse } from "next";
 import User from "@/models/user";
+import { NextRequest, NextResponse } from "next/server";
 
 // export async function POST(req: NextApiRequest, res: NextApiResponse) {
 //   // ...
@@ -38,14 +38,14 @@ import User from "@/models/user";
 //   }
 // }
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET(req: NextRequest, res: NextResponse) {
   // ...
 
   try {
     // await connectToDatabase();
     // const users = await User.find({});
-    res.status(200).json({ heello: "hello from the server" });
+    res.json();
   } catch (error) {
-    res.status(500).json({ error: error });
+    console.log(error);
   }
 }
