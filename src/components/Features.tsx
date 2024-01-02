@@ -1,5 +1,5 @@
 import React from "react";
-import CardItem from "./Cards";
+import CardItem from "./ui/Cards";
 
 type Props = {};
 import {
@@ -8,7 +8,7 @@ import {
   AiOutlineApartment,
   AiOutlineCloud,
   AiOutlineCodeSandbox,
-} from "./Icons";
+} from "./ui/Icons";
 import MaxWidthWraper from "./MaxWidthWraper";
 import { Button, buttonVariants } from "./ui/button";
 import Link from "next/link";
@@ -72,7 +72,7 @@ function Features({}: Props) {
           </Link>
           <Link href={"/"} className={cn(buttonVariants(), "")}>
             <IoMdDownload className="inline-block mr-2 animate-bounce" />
-            Formulaire d'inscription{" "}
+            {"Formulaire d'inscription "}
           </Link>
         </div>
       </MaxWidthWraper>

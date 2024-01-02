@@ -8,10 +8,10 @@ type Props = {};
 
 const Partners = (props: Props) => {
   return (
-    <div className="my-20 bg-slate-200">
+    <div className="my-20 bg-primary/5 ">
       <MaxWidthWraper>
         <div>
-          <h2 className="scroll-m-20 py-10 border-y  text-4xl sm:text-5xl font-semibold tracking-tight first:mt-0 text-center">
+          <h2 className="scroll-m-20 py-10 border-b-2 border-black/20 text-primary text-4xl sm:text-5xl font-semibold tracking-tight first:mt-0 text-center">
             Our Partners
           </h2>
           <div>

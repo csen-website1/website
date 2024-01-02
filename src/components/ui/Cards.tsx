@@ -28,7 +28,7 @@ export default function CardItem({
   return (
     <Card
       className={cn(
-        "lg:max-w-md w-full min-h-[350px] text-center mx-auto shadow-2xl ",
+        "lg:max-w-md w-full min-h-[350px] text-center mx-auto shadow-2xl bg-secondary ",
         styling
       )}
     >

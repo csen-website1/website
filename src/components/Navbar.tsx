@@ -39,10 +39,10 @@ function Navbar({}: Props) {
     },
   ];
   return (
-    <div className="relative bg-slate-700 z-50">
+    <div className="relative  z-50">
       <div className="fixed inset-x-0 top-5 h-16  text-white">
         <MaxWidthWraper>
-          <div className="mx-auto px-5 h-16 flex items-center justify-between rounded-xl shadow-lg backdrop-blur-md bg-primary/40">
+          <div className="mx-auto px-5 h-16 flex items-center justify-between rounded-xl shadow-lg backdrop-blur-md bg-primary/40 bg-blend-screen">
             <Link href="/">
               <Image
                 src="/images/logoNav.png"

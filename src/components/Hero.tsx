@@ -1,34 +1,43 @@
 import React from "react";
 import MaxWidthWraper from "./MaxWidthWraper";
 import Image from "next/image";
-import AnimatedText from "./AnimatedText";
+import AnimatedText from "./ui/AnimatedText";
 import { Button } from "./ui/button";
 
 type Props = {};
 
 function Hero({}: Props) {
   return (
-    <div className="min-h-screen h-full ">
-      <div className="min-h-screen">
+    <div className="bg-[url(/images/background.svg)] bg-no-repeat bg-cover bg-center bg-muted  ">
+      <div className="flex justify-center items-center min-h-screen ">
         <MaxWidthWraper classNme="h-full">
-          <div className="flex flex-col md:flex-row items-center h-full z-10 relative ">
-            <div className="flex flex-col  basis-full my-4 sm:basis-3/6 sm:mt-20  sm:px-0 px-5 mt-24">
-              <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl my-4">
-                With{" "}
-                <AnimatedText
-                  className="text-primary font-medium"
-                  text="CSEN "
-                  duration={3}
-                />
-                Innovating Structural Analysis,
-                <div>
-                  {" "}
-                  <AnimatedText className="text-primary" text="Securing" />{" "}
-                </div>
-                Tomorrow
+          <div className="flex flex-col md:flex-row items-center h-full z-10 relative text-center ">
+            <div className="flex flex-col  basis-full sm:basis-3/6 sm:mt-20  sm:px-0 px-5 mt-24">
+              <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl my-4 ">
+                <span className="">
+                  With
+                  <AnimatedText
+                    className="text-primary font-medium"
+                    text="CSEN "
+                    duration={3}
+                  />
+                  Innovating Structural Analysis,
+                  <div>
+                    {" "}
+                    <AnimatedText
+                      className="text-primary inline-block font-medium px-1/2  "
+                      text="Securing "
+                    />{" "}
+                    <AnimatedText
+                      className=" inline-block font-medium px-1/2 "
+                      text="Tomorrow"
+                      duration={2}
+                    />
+                  </div>
+                </span>
               </h1>
-              <p className="leading-7 [&:not(:first-child)]:mt-6">
-                CSEN s'engage à propulser le génie civil algérien vers de
+              <p className="leading-7 [&:not(:first-child)]:mt-6   font-medium">
+                {`CSEN s'engage à propulser le génie civil algérien vers de
                 nouveaux sommets en fournissant des outils technologiques de
                 pointe pour l'analyse et la conception de constructions
                 résistantes aux séismes en Algérie. Notre dévouement à
@@ -36,13 +45,15 @@ function Hero({}: Props) {
                 permettent aux ingénieurs et aux parties prenantes de créer des
                 structures résilientes conformes aux réglementations
                 parasismiques, contribuant à la sécurité et à la durabilité des
-                projets de construction en Algérie.
+                projets de construction en Algérie.`}
               </p>
-              <div className="mt-10 flex flex-col sm:flex-row items-center sm:space-x-4">
-                <Button variant={"default"}>Get Started</Button>
+              <div className="mt-10 flex flex-col w-full items-center sm:space-x-4">
+                <Button className="mx-auto " variant={"outline"}>
+                  Get Started
+                </Button>
               </div>
             </div>
-            <div className="basis-full sm:basis-3/6">
+            <div className="basis-full sm:basis-3/6   ">
               <Image
                 src="/images/RPA Plug-in.png"
                 width={1999}

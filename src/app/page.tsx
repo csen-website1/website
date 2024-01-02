@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Partners from "@/components/Partners";
 import RpaSection from "@/components/RpaSection";
 import Features from "@/components/Features";
+import Testimonials from "@/components/Testimonials";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Partners />
       <RpaSection />
       <Features />
+      <Testimonials />
     </>
   );
 }

@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import MaxWidthWraper from "./MaxWidthWraper";
 import { useAnimation, useInView, motion } from "framer-motion";
-import CardItem from "./Cards";
+import CardItem from "./ui/Cards";
 
 interface Props {}
 
@@ -75,16 +75,16 @@ const RpaSection = (props: Props) => {
         </motion.div>
         <div>
           <h2 className="scroll-m-20 py-10 border-y  text-2xl sm:text-3xl font-semibold tracking-tight first:mt-0 text-center">
-            Logiciel d’analyse des structures en Béton Armé selon les DTR
-            Algérien Travail en collaboration avec CSI-ETABS
+            {`Logiciel d’analyse des structures en Béton Armé selon les DTR
+            Algérien Travail en collaboration avec CSI-ETABS`}
           </h2>
           <p className="text-center font-light">
-            Avec notre solution qui est basée sur la numérisation des DTR et
+            {` Avec notre solution qui est basée sur la numérisation des DTR et
             l'automatisation du calcul nous pouvons à la fois augmenter la
             croissance de la productive ainsi qu’arrivé à une étude parasismique
             qui est conforme à la règlementation locale d'une manière précise,
             rapide et fiable tout en choisissant la meilleure proposition
-            économique.
+            économique.`}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 my-24 mx-auto w-full gap-6">
