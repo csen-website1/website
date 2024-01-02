@@ -33,10 +33,10 @@ const Footer = (props: Props) => {
             {/* TODO Logo */}
           </Link>
           <p className="mt-2 text-xs text-justify text-gray-400">
-            Chez CSEN, notre passion pour l'innovation en génie civil se traduit
+            {` Chez CSEN, notre passion pour l'innovation en génie civil se traduit
             par une solution d'analyse parasismique avancée, conforme aux normes
             Algériennes. Ensemble, construisons l'avenir avec des structures
-            sûres, résilientes et optimales.
+            sûres, résilientes et optimales.`}
           </p>
           <div className="flex mt-4">
             <Input type="email" placeholder="Email" />
