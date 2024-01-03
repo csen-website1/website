@@ -23,12 +23,24 @@ interface FormData {
 }
 
 const schema = z.object({
-  firstName: z.string().min(1),
-  lastName: z.string().min(1),
+  firstName: z
+    .string()
+    .min(1)
+    .regex(/^[a-zA-Z]+$/),
+  lastName: z
+    .string()
+    .min(1)
+    .regex(/^[a-zA-Z]+$/),
   jobTitle: z.string().min(1),
-  email: z.string().email(),
+  email: z
+    .string()
+    .email()
+    .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/),
   address: z.string().min(1),
-  phoneNumber: z.string().min(1),
+  phoneNumber: z
+    .string()
+    .min(1)
+    .regex(/^[0-9]{10}$/),
   userType: z.enum(["Agence", "Société", "Bureau d'étude", "Etudiant"]),
   companyName: z.string().min(1).optional(),
   interest: z.enum([
@@ -53,6 +65,7 @@ const Form = () => {
     companyName: "",
     message: "",
   });
+  const [error, setEror] = useState<String>("");
 
   const {
     register,
@@ -76,7 +89,7 @@ const Form = () => {
       console.log(response.data);
     } catch (error: any) {
       console.error(error);
-      alert(error.message);
+      setEror(error.response.data);
     } finally {
     }
   };

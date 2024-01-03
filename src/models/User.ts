@@ -12,7 +12,16 @@ interface User {
   companyName?: string;
   message: [string];
 }
-
+// interest: "La numérisation & l'automatisation",
+//     userType: "Agence",
+//     firstName: "",
+//     lastName: "",
+//     jobTitle: "",
+//     email: "",
+//     address: "",
+//     phoneNumber: "",
+//     companyName: "",
+//     message: "",
 const UserSchema: Schema = new Schema({
   interest: {
     type: String,
