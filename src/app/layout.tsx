@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   description:
     "CSEN dz provides innovative structural engineering and numerical analysis solutions for diverse industries. Explore our services, RPA Plug-in, and CSEN Cloud.", // More descriptive and keyword-rich
   icons: "/favicon.ico",
-  keywords:
-    "structural engineering, numerical analysis, RPA, CSEN Cloud, CSEN dz", // Refined keywords for relevance
+  keywords: "structural engineering, csen , RPA, CSEN Cloud, CSEN dz",
+  // Refined keywords for relevance
   openGraph: {
     title: "CSEN dz | Structural Engineering & Numerical Solutions",
     url: "https://csen-dz.com",
