@@ -97,12 +97,13 @@ const RpaSection = (props: Props) => {
             />
           ))}
         </div>
-        <h3>
+        <h3 className="text-center">
           Besoin plus de detail ?{" "}
           <Link
             href={
               "https://drive.google.com/file/d/1fUAGST-Euq8_933g-68N5U_S2XbAKSf-/view"
             }
+            className="text-primary/50"
           >
             {" "}
             Telecharger la fiche descriptive
