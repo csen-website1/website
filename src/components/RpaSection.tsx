@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import MaxWidthWraper from "./MaxWidthWraper";
 import { useAnimation, useInView, motion } from "framer-motion";
 import CardItem from "./ui/Cards";
+import Link from "next/link";
 
 interface Props {}
 
@@ -96,6 +97,17 @@ const RpaSection = (props: Props) => {
             />
           ))}
         </div>
+        <h3>
+          Besoin plus de detail ?{" "}
+          <Link
+            href={
+              "https://drive.google.com/file/d/1fUAGST-Euq8_933g-68N5U_S2XbAKSf-/view"
+            }
+          >
+            {" "}
+            Telecharger la fiche descriptive
+          </Link>
+        </h3>
       </MaxWidthWraper>
     </div>
   );
