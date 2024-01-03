@@ -35,7 +35,7 @@ function Navbar({}: Props) {
     },
     {
       name: "Contacte",
-      href: "/form",
+      href: "/contacte",
     },
   ];
   return (
