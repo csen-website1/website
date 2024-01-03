@@ -28,7 +28,7 @@ const products = [
       <img
         className="h-1/2 w-1/2 sm:h-1/4 sm:w-1/4 xl:w-1/2"
         src="/images/logo2.png"
-        alt=""
+        alt="La version Cloud"
       />
     ),
   },
