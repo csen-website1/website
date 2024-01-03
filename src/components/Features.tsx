@@ -74,7 +74,7 @@ function Features({}: Props) {
             className={buttonVariants()}
           >
             <IoMdDownload className="inline-block mr-2 animate-bounce" /> RPA
-            Set-up Plug-in
+            Setup RPA Plug-in
           </Link>
           <Link
             href={"https://1drv.ms/u/s!AjoKEUyTPe6ugz2JH0hKrsON0uGe?e=8pc9d5"}

@@ -17,7 +17,7 @@ const Partners = (props: Props) => {
           <div>
             <div className="flex flex-wrap flex-col sm:flex-row items-center justify-center">
               <div className="sm:w-1/3 md:1/2 p-2 flex items-center justify-center grayscale hover:grayscale-0 hover:scale-105 transition-all">
-                <Link href={"https://www.scte-dz.com/cms/"}>
+                <Link href={"www.scte-dz.com/"}>
                   <img
                     className="w-full scale-50"
                     src="/Logo Partners/SCTE.png"
