@@ -1,55 +1,66 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
-export interface IUser extends Document {
-  name: string;
+interface User {
+  interest: string;
+  userType: string;
+  firstName: string;
   lastName: string;
-  title: string;
+  jobTitle: string;
   email: string;
-  address?: string;
-  phone: string;
-  status: string;
-  company?: string;
-  target: string;
-  messages: object[];
+  address: string;
+  phoneNumber: string;
+  companyName?: string;
+  message: [string];
 }
 
-const userSchema: Schema<IUser> = new mongoose.Schema({
-  name: {
+const UserSchema: Schema = new Schema({
+  interest: {
     type: String,
     required: true,
+  },
+  userType: {
+    type: String,
+    required: true,
+  },
+  firstName: {
+    type: String,
+    required: true,
+    match: /^[a-zA-Z]+$/,
   },
   lastName: {
     type: String,
     required: true,
+    match: /^[a-zA-Z]+$/,
   },
-  title: {
+  jobTitle: {
     type: String,
     required: true,
   },
   email: {
     type: String,
     required: true,
+    match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
   },
-  address: String,
-  phone: {
+  address: {
     type: String,
     required: true,
   },
-  status: {
+  phoneNumber: {
     type: String,
     required: true,
+    match: /^[0-9]{10}$/,
   },
-  company: String,
-  target: {
+  companyName: {
     type: String,
-    required: true,
+    required: false,
   },
-  messages: {
+  message: {
     type: [Object],
     required: true,
   },
 });
 
-const User = mongoose.models.User || mongoose.model<IUser>("User", userSchema);
+const UserModel =
+  mongoose.models.UserModel || mongoose.model<User>("UserModel", UserSchema);
 
-export default User;
+export default UserModel;

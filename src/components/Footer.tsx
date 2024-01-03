@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import {
   GrFacebook,
   GrFacebookOption,
@@ -16,10 +16,25 @@ import { Input } from "./ui/input";
 import Image from "next/image";
 import { Separator } from "@radix-ui/react-separator";
 import { GiPhone } from "react-icons/gi";
+import axios from "axios";
 
 type Props = {};
 
 const Footer = (props: Props) => {
+  const [email, setEmail] = useState("");
+  const handleEmail = async () => {
+    try {
+      const res = await axios.post("/api/email", { email });
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setEmail("");
+    }
+  };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
   return (
     <footer className="bg-primary py-7">
       <div
@@ -49,8 +64,15 @@ const Footer = (props: Props) => {
             sûres, résilientes et optimales.`}
           </p>
           <div className="flex mt-4">
-            <Input type="email" placeholder="Email" />
-            <Button variant="destructive">Subscribe</Button>
+            <Input
+              type="email"
+              placeholder="Email"
+              onChange={handleChange}
+              value={email}
+            />
+            <Button onClick={handleEmail} variant="destructive">
+              Subscribe
+            </Button>
           </div>
           <div className="flex mt-4 space-x-4 lg:mt-2 text-xl">
             <Link
