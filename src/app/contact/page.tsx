@@ -1,5 +1,6 @@
 import React from "react";
 import Form from "@/components/Form";
+import Accordions from "@/components/Accordions";
 
 type Props = {};
 
@@ -10,6 +11,7 @@ function page({}: Props) {
         Register To RPA Plug-in
       </h1>
       <Form />
+      <Accordions />
     </>
   );
 }
