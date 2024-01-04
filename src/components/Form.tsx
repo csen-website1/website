@@ -8,6 +8,13 @@ import MaxWidthWraper from "@/components/MaxWidthWraper";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "./ui/button";
+import { set } from "mongoose";
+import {
+  CircleBackslashIcon,
+  CountdownTimerIcon,
+  PieChartIcon,
+} from "@radix-ui/react-icons";
+import { GiCircle, GiLoad, GiSpineArrow } from "react-icons/gi";
 
 interface FormData {
   interest: string;
@@ -65,7 +72,9 @@ const Form = () => {
     companyName: "",
     message: "",
   });
-  const [error, setEror] = useState<String>("");
+  const [state, setState] = useState<boolean>(false);
+  const [submiting, setSubmiting] = useState<boolean>(false);
+  const [error, setError] = useState<String>("");
 
   const {
     register,
@@ -87,10 +96,12 @@ const Form = () => {
     try {
       const response = await axios.post("/api/submit", data);
       console.log(response.data);
+      setSubmiting(true);
     } catch (error: any) {
       console.error(error);
-      setEror(error.response.data);
+      setError(error.response.data);
     } finally {
+      setSubmiting(false);
     }
   };
 
@@ -279,9 +290,11 @@ const Form = () => {
               </div>
               <Button
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2"
+                className={`bg-blue-500 text-white px-4 py-2 ${
+                  submiting ? "opacity-50 cursor-not-allowed" : ""
+                }}`}
               >
-                Submit
+                {submiting ? <PieChartIcon className={"animate-spin"} /> : "Submit"}
               </Button>
             </form>
           </MaxWidthWraper>
