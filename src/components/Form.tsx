@@ -8,13 +8,8 @@ import MaxWidthWraper from "@/components/MaxWidthWraper";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "./ui/button";
-import { set } from "mongoose";
-import {
-  CircleBackslashIcon,
-  CountdownTimerIcon,
-  PieChartIcon,
-} from "@radix-ui/react-icons";
-import { GiCircle, GiLoad, GiSpineArrow } from "react-icons/gi";
+
+import { EnvelopeOpenIcon, PieChartIcon } from "@radix-ui/react-icons";
 
 interface FormData {
   interest: string;
@@ -73,7 +68,7 @@ const Form = () => {
     message: "",
   });
   const [state, setState] = useState<boolean>(false);
-  const [submiting, setSubmiting] = useState<boolean>(false);
+  const [submitting, setSubmitting] = useState<boolean>(false);
   const [error, setError] = useState<String>("");
 
   const {
@@ -96,12 +91,26 @@ const Form = () => {
     try {
       const response = await axios.post("/api/submit", data);
       console.log(response.data);
-      setSubmiting(true);
+      setSubmitting(true);
     } catch (error: any) {
       console.error(error);
       setError(error.response.data);
     } finally {
-      setSubmiting(false);
+      setSubmitting(false);
+      // reset the form after submittin
+
+      setFormData({
+        interest: "La numérisation & l'automatisation",
+        userType: "Agence",
+        firstName: "",
+        lastName: "",
+        jobTitle: "",
+        email: "",
+        address: "",
+        phoneNumber: "",
+        companyName: "",
+        message: "",
+      });
     }
   };
 
@@ -208,7 +217,7 @@ const Form = () => {
                           id={userType.toLowerCase()}
                           value={userType}
                           {...register("userType")}
-                          className="mr-2 scale-50"
+                          className="mr-2 scale-50 border-none shadow-none"
                         />
                         <Label
                           htmlFor={userType.toLowerCase()}
@@ -245,7 +254,7 @@ const Form = () => {
                     )}
                   </div>
                 )}
-              <div className="mb-4">
+              <div className="mb-4 w-full">
                 <Label className="block mb-2">Vous êtes intéressé par:</Label>
                 <div className="flex flex-col">
                   {[
@@ -254,20 +263,23 @@ const Form = () => {
                     "La version Premium de RPA Plug-in",
                     "La version Cloud de RPA Plug-in",
                   ].map((interest) => (
-                    <div key={interest}>
+                    <div
+                      className="flex justify-between w-full items-center  my-1"
+                      key={interest}
+                    >
+                      <Label
+                        htmlFor={interest.toLowerCase().replace(/ /g, "-")}
+                        className="mr-4 basis-2/4"
+                      >
+                        {interest}
+                      </Label>
                       <Input
                         type="radio"
                         id={interest.toLowerCase().replace(/ /g, "-")}
                         value={interest}
                         {...register("interest")}
-                        className="scale-50"
+                        className="scale-50 border-none shadow-none basis-1/5"
                       />
-                      <Label
-                        htmlFor={interest.toLowerCase().replace(/ /g, "-")}
-                        className="mr-4"
-                      >
-                        {interest}
-                      </Label>
                     </div>
                   ))}
                 </div>
@@ -277,12 +289,12 @@ const Form = () => {
               </div>
               <div className="mb-4">
                 <Label htmlFor="message" className="block mb-2">
-                  Message
+                  Message :
                 </Label>
                 <textarea
                   id="message"
                   {...register("message")}
-                  className="w-full p-2"
+                  className="w-full p-2 border"
                 ></textarea>
                 {errors.message && (
                   <span className="text-red-500">Message is required</span>
@@ -291,10 +303,18 @@ const Form = () => {
               <Button
                 type="submit"
                 className={`bg-blue-500 text-white px-4 py-2 ${
-                  submiting ? "opacity-50 cursor-not-allowed" : ""
+                  submitting ? "cursor-not-allowed opacity-50 " : ""
                 }}`}
+                disabled={submitting}
               >
-                {submiting ? <PieChartIcon className={"animate-spin"} /> : "Submit"}
+                {submitting ? (
+                  <PieChartIcon className={"animate-spin"} />
+                ) : (
+                  <>
+                    <EnvelopeOpenIcon className="mr-4 w-5 h-5 text-white" />{" "}
+                    Submit
+                  </>
+                )}
               </Button>
             </form>
           </MaxWidthWraper>
