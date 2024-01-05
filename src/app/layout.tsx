@@ -4,7 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { StoreProvider } from "./store/StoreProvider";
+// import { StoreProvider } from "./store/StoreProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <StoreProvider>
+    // <StoreProvider>
       <html lang="en" className="h-full scroll-smooth ">
         <body
           className={cn(
@@ -50,6 +50,6 @@ export default function RootLayout({
           <Footer />
         </body>
       </html>
-    </StoreProvider>
+    // </StoreProvider>
   );
 }

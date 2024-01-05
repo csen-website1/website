@@ -8,7 +8,6 @@ import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { text } from "stream/consumers";
 
 type Props = {
-  duration?: number;
   text: string;
   state: boolean;
 };
