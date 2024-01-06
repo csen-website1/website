@@ -63,17 +63,15 @@ const Footer = (props: Props) => {
             Algériennes. Ensemble, construisons l'avenir avec des structures
             sûres, résilientes et optimales.`}
           </p>
-          <div className="flex mt-4">
+          <form className="flex mt-4" onSubmit={handleEmail}>
             <Input
               type="email"
               placeholder="Email"
               onChange={handleChange}
               value={email}
             />
-            <Button onClick={handleEmail} variant="destructive">
-              Subscribe
-            </Button>
-          </div>
+            <Button variant="destructive">Subscribe</Button>
+          </form>
           <div className="flex mt-4 space-x-4 lg:mt-2 text-xl">
             <Link
               href={"https://www.facebook.com/profile.php?id=61550225428516"}

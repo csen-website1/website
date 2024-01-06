@@ -1,10 +1,19 @@
 import connectToDatabase from "@/lib/db";
 import Email from "@/models/Email";
 import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
-export async function GET() {
-  return NextResponse.json({ message: "GET /api/email" });
-}
+const transporter = nodemailer.createTransport({
+  host: "smtp.hostinger.com",
+  port: 465,
+  secure: true,
+  authMethod: "PLAIN",
+
+  auth: {
+    user: process.env.GRIEVANCE_EMAIL,
+    pass: process.env.GRIEVANCE_EMAIL_PASSWORD,
+  },
+});
 export async function POST(request: Request) {
   await connectToDatabase();
 
@@ -12,7 +21,15 @@ export async function POST(request: Request) {
   const existingEmail = await Email.findOne({ email: data.email });
   if (!existingEmail) {
     const email = await Email.create(data);
-    return NextResponse.json({ data: existingEmail });
+    await transporter.sendMail({
+      from: process.env.GRIEVANCE_EMAIL,
+      to: data.email,
+      subject: "Welcome to our website",
+      text: "Thank you for signing up!",
+    });
+    console.log(data);
+    console.log(data.email);
+    return NextResponse.json({ data: email });
   }
   NextResponse.error();
 
