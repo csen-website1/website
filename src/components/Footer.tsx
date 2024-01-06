@@ -112,11 +112,6 @@ const Footer = (props: Props) => {
                   SCTE
                 </Link>
               </li>
-              <li>
-                <Link href={"www.anpt.dz"} className="text-gray-300">
-                  ANPT
-                </Link>
-              </li>
             </ul>
           </div>
 
