@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "./ui/button";
 
 import { EnvelopeOpenIcon, PieChartIcon } from "@radix-ui/react-icons";
+import AlertComponent from "./AlertComponent";
 
 interface FormData {
   interest: string;
@@ -69,7 +70,8 @@ const Form = () => {
   });
   const [state, setState] = useState<boolean>(false);
   const [submitting, setSubmitting] = useState<boolean>(false);
-  const [error, setError] = useState<String>("");
+  const [res, setRes] = useState<String>("");
+  const [alert, setAlert] = useState<boolean>(false);
 
   const {
     register,
@@ -90,17 +92,26 @@ const Form = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const response = await axios.post("/api/submit", data);
-      console.log(response.data);
       setSubmitting(true);
-    } catch (error: any) {
-      console.error(error);
-      setError(error.response.data);
+      const response = await axios.post("/api/submit", data);
+      setRes(response.data.messag);
+      setState(true);
+    } catch (e: any) {
+      console.error(e);
+      setRes(e.response.data.message);
+      setState(false);
     } finally {
       setSubmitting(false);
-      // reset the form after submittin
 
-      if (!error) reset();
+      // reset the form after submittin
+      setTimeout(() => {
+        setAlert(true);
+      }, 1000);
+      setTimeout(() => {
+        setAlert(false);
+      }, 5000);
+
+      reset();
     }
   };
 
@@ -122,7 +133,9 @@ const Form = () => {
                     className="w-full p-2 mb-4"
                   />
                   {errors.firstName && (
-                    <span className="text-red-500">First Name is required</span>
+                    <span className="text-red-500 text-xs">
+                      {errors.firstName.message}
+                    </span>
                   )}
                 </div>
                 <div className="w-full md:w-1/2">
@@ -136,7 +149,9 @@ const Form = () => {
                     className="w-full p-2 mb-4"
                   />
                   {errors.lastName && (
-                    <span className="text-red-500">Last Name is required</span>
+                    <span className="text-red-500 text-xs">
+                      {errors.lastName.message}
+                    </span>
                   )}
                 </div>
               </div>
@@ -151,7 +166,9 @@ const Form = () => {
                   className="w-full p-2"
                 />
                 {errors.jobTitle && (
-                  <span className="text-red-500">Job Title is required</span>
+                  <span className="text-red-500 text-xs ">
+                    {errors.jobTitle.message}
+                  </span>
                 )}
               </div>
               <div className="mb-4">
@@ -165,7 +182,9 @@ const Form = () => {
                   className="w-full p-2"
                 />
                 {errors.email && (
-                  <span className="text-red-500">Invalid Email</span>
+                  <span className="text-red-500 text-xs">
+                    {errors.email.message}
+                  </span>
                 )}
               </div>
               <div className="mb-4">
@@ -179,7 +198,9 @@ const Form = () => {
                   className="w-full p-2"
                 />
                 {errors.address && (
-                  <span className="text-red-500">Address is required</span>
+                  <span className="text-red-500 text-xs">
+                    {errors.address.message}
+                  </span>
                 )}
               </div>
               <div className="mb-4">
@@ -193,7 +214,9 @@ const Form = () => {
                   className="w-full p-2"
                 />
                 {errors.phoneNumber && (
-                  <span className="text-red-500">Phone Number is required</span>
+                  <span className="text-red-500 text-xs">
+                    {errors.phoneNumber.message}
+                  </span>
                 )}
               </div>
               <div className="mb-4">
@@ -220,7 +243,9 @@ const Form = () => {
                   )}
                 </div>
                 {errors.userType && (
-                  <span className="text-red-500">User Type is required</span>
+                  <span className="text-red-500 text-xs">
+                    {errors.userType.message}
+                  </span>
                 )}
               </div>
               {watch("userType") &&
@@ -238,8 +263,8 @@ const Form = () => {
                       className="w-full p-2"
                     />
                     {errors.companyName && (
-                      <span className="text-red-500">
-                        Additional Info is required
+                      <span className="text-red-500 text-xs">
+                        {errors.companyName.message}
                       </span>
                     )}
                   </div>
@@ -274,7 +299,9 @@ const Form = () => {
                   ))}
                 </div>
                 {errors.interest && (
-                  <span className="text-red-500">Interest is required</span>
+                  <span className="text-red-500 text-xs">
+                    {errors.interest.message}
+                  </span>
                 )}
               </div>
               <div className="mb-4">
@@ -287,7 +314,9 @@ const Form = () => {
                   className="w-full p-2 border"
                 ></textarea>
                 {errors.message && (
-                  <span className="text-red-500">Message is required</span>
+                  <span className="text-red-500 text-xs">
+                    {errors.message.message}
+                  </span>
                 )}
               </div>
               <Button
@@ -307,6 +336,7 @@ const Form = () => {
                 )}
               </Button>
             </form>
+            <AlertComponent alert={alert} state={state} text={res} />
           </MaxWidthWraper>
         </div>
       </div>

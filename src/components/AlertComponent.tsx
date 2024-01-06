@@ -8,14 +8,15 @@ import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { text } from "stream/consumers";
 
 type Props = {
-  text: string;
+  text: String;
+  alert: boolean;
   state: boolean;
 };
 
-function AlertComponent({ text, state }: Props) {
+function AlertComponent({ text, state, alert }: Props) {
   return (
-    <div>
-      {state ? (
+    <div className={`fixed bottom-5 right-0 ${alert ? "block" : "hidden"}`}>
+      {!state ? (
         <Alert className="bg-destructive/40 w-fit flex-row  items-center flex-nowrap ">
           <ExclamationTriangleIcon className="h-8 w-8" />
           <div className="mx-4">

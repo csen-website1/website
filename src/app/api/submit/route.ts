@@ -14,7 +14,10 @@ export const POST = async (request: Request) => {
         { email: data.email },
         { $push: { message: data.message } }
       );
-      return NextResponse.json({ message: "Message added" }, { status: 200 });
+      return NextResponse.json(
+        { message: "Your Message has Been recived " },
+        { status: 200 }
+      );
     }
 
     await UserModel.create({
@@ -22,7 +25,10 @@ export const POST = async (request: Request) => {
       message: { text: data.message, date: new Date() },
     });
 
-    return NextResponse.json({ message: "User added" }, { status: 200 });
+    return NextResponse.json(
+      { message: "Your Submission has been sent successfully" },
+      { status: 200 }
+    );
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
