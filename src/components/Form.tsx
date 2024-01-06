@@ -76,6 +76,7 @@ const Form = () => {
     handleSubmit,
     formState: { errors },
     watch,
+    reset,
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
@@ -99,18 +100,7 @@ const Form = () => {
       setSubmitting(false);
       // reset the form after submittin
 
-      setFormData({
-        interest: "La numérisation & l'automatisation",
-        userType: "Agence",
-        firstName: "",
-        lastName: "",
-        jobTitle: "",
-        email: "",
-        address: "",
-        phoneNumber: "",
-        companyName: "",
-        message: "",
-      });
+      if (!error) reset();
     }
   };
 
