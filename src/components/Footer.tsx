@@ -104,11 +104,8 @@ const Footer = (props: Props) => {
             </h2>
             <ul className="space-y-2 text-sm list-none">
               <li>
-                <Link
-                  href={"https://www.scte-dz.com/cms/"}
-                  className="text-gray-300"
-                >
-                  SCTE
+                <Link href={"https://anpt.dz/"} className="text-gray-300">
+                  {"ANPT"}
                 </Link>
               </li>
             </ul>
