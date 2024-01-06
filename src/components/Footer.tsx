@@ -66,6 +66,7 @@ const Footer = (props: Props) => {
           <form className="flex mt-4" onSubmit={handleEmail}>
             <Input
               type="email"
+              name="email"
               placeholder="Email"
               onChange={handleChange}
               value={email}

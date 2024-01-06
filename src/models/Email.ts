@@ -1,4 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
+import { date } from "zod";
 
 export interface IEmail extends Document {
   email: string;
@@ -9,6 +10,10 @@ const EmailSchema: Schema = new Schema({
     type: String,
     required: true,
     match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+    date: {
+      type: Date,
+      default: Date.now,
+    },
   },
 });
 

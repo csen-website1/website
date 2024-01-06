@@ -35,3 +35,9 @@ export async function POST(request: Request) {
 
   return NextResponse.json({ data });
 }
+
+// export async function GET() {
+//   await connectToDatabase();
+//   const emails = await Email.find({});
+//   return NextResponse.json({ data: emails });
+// }
