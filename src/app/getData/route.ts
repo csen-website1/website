@@ -12,5 +12,5 @@ export async function GET() {
     const users = await UserModel.find({});
     return NextResponse.json(users);
   }
-  return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  return NextResponse.redirect("https://csen-dz.com");
 }
