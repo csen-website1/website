@@ -4,8 +4,11 @@ import { NextResponse } from "next/server";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import connectToDatabase from "@/lib/db";
 import { UserModel } from "@/models/User";
+import nextAuth from "next-auth";
+import { config } from "../api/auth/[...nextauth]/auth";
 
 export async function GET() {
+  const authOptions = nextAuth(config);
   const session = (await getServerSession(authOptions)) as {
     user?: { name: string };
   };
