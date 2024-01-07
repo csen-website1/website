@@ -50,7 +50,7 @@ export default async function RootLayout({
             <SessionProvider session={session}>{children}</SessionProvider>
           </div>
         </main>
-        <Footer /> // Add the missing component
+        <Footer />
       </body>
     </html>
   );
