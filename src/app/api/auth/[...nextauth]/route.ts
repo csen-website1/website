@@ -1,4 +1,4 @@
-import nextAuth from "next-auth";
+import nextAtuth from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 
 const authOptions = {
@@ -10,6 +10,6 @@ const authOptions = {
   ],
 };
 
-export const handler = nextAuth(authOptions);
+export const handler = nextAtuth(authOptions);
 
-export { handler as GET, handler as POST };
+export { handler as GET, handler as POST, authOptions };
