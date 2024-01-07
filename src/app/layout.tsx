@@ -3,53 +3,55 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-// import { StoreProvider } from "./store/StoreProvider";
+import Footer from "@/components/Footer"; // Import the missing component
+
+import SessionProvider from "@/components/SessionProvider";
+import { getServerSession } from "next-auth";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "CSEN | Structural Engineering & Numerical Solutions", // Enhanced title with key services
+  title: "CSEN | Structural Engineering & Numerical Solutions",
   description:
-    "CSEN dz provides innovative structural engineering and numerical analysis solutions for diverse industries. Explore our services, RPA Plug-in, and CSEN Cloud.", // More descriptive and keyword-rich
+    "CSEN dz provides innovative structural engineering and numerical analysis solutions for diverse industries. Explore our services, RPA Plug-in, and CSEN Cloud.",
   icons: "/favicon.ico",
   keywords: "structural engineering, csen , RPA, CSEN Cloud, CSEN dz",
-  // Refined keywords for relevance
   openGraph: {
     title: "With CSEN Innovating Structural Analysis,SecuringTomorrow",
     url: "https://csen-dz.com",
     description:
       "CSEN dz offers expert structural engineering and numerical analysis services to optimize your projects.",
-    images: ["/logo3.jpg"], // Add a visually appealing image
+    images: ["/logo3.jpg"],
   },
   twitter: {
     title: "CSEN dz: Empowering Innovation in Structural Engineering",
     description:
       "Discover CSEN dz's cutting-edge services for structural engineering and numerical analysis. #structuralengineering #numericalanalysis",
-    images: "/logo3.jpg", // Use a relevant Twitter image
+    images: "/logo3.jpg",
   },
 };
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerSession();
   return (
-    // <StoreProvider>
-      <html lang="en" className="h-full scroll-smooth ">
-        <body
-          className={cn(
-            "relative h-full font-sans antialiased overflow-x-hidden",
-            inter.className
-          )}
-        >
-          <Navbar />
-          <main className="relative flex flex-col min-h-screen">
-            <div className="flex-grow flex-1">{children}</div>
-          </main>
-          <Footer />
-        </body>
-      </html>
-    // </StoreProvider>
+    <html lang="en" className="h-full scroll-smooth ">
+      <body
+        className={cn(
+          "relative h-full font-sans antialiased overflow-x-hidden",
+          inter.className
+        )}
+      >
+        <Navbar />
+        <main className="relative flex flex-col min-h-screen">
+          <div className="flex-grow flex-1">
+            <SessionProvider session={session}>{children}</SessionProvider>
+          </div>
+        </main>
+        <Footer /> // Add the missing component
+      </body>
+    </html>
   );
 }
