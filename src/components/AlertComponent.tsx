@@ -21,7 +21,11 @@ function AlertComponent({ text, state, alert }: Props) {
           <ExclamationTriangleIcon className="h-8 w-8" />
           <div className="mx-4">
             <AlertTitle>Something Went Wrong</AlertTitle>
-            <AlertDescription>{text}</AlertDescription>
+            <AlertDescription>
+              {" "}
+              {text ||
+                "Ops ! There some Unknown Error Please Try Again Later ! "}
+            </AlertDescription>
           </div>
         </Alert>
       ) : (
@@ -29,7 +33,9 @@ function AlertComponent({ text, state, alert }: Props) {
           <CheckCircledIcon className="h-8 w-8" />
           <div className="mx-4">
             <AlertTitle>Success</AlertTitle>
-            <AlertDescription>{text}</AlertDescription>
+            <AlertDescription>
+              {text || "Your Submission has been recived ! "}
+            </AlertDescription>
           </div>
         </Alert>
       )}

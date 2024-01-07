@@ -1,9 +1,9 @@
-import NextAuth from "next-auth";
-import GitHubProvider from "next-auth/providers/github";
-import nextAuth from "next-auth";
-import { config } from "./auth";
+// import NextAuth from "next-auth";
+// import GitHubProvider from "next-auth/providers/github";
+// import nextAuth from "next-auth";
+// import { config } from "./auth";
 
-const handler = NextAuth(config);
+// const handler = NextAuth(config);
 
-export const authOptions = NextAuth(config);
-export { handler as GET, handler as POST };
+// export const authOptions = NextAuth(config);
+// export { handler as GET, handler as POST };
