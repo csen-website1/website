@@ -1,11 +1,25 @@
+"use client";
+import React, { useEffect, useState } from "react";
 import Signin from "@/components/Signin";
+import axios from "axios";
 
-type Props = {};
+export default function Page() {
+  const [data, setData] = useState<any[]>([]);
 
-export default async function page(props: Props) {
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get("/api/getdata");
+      setData(response.data);
+    };
+
+    fetchData();
+  }, []);
+
+  console.log(data);
+
   return (
     <div>
-        <h2>hello</h2>
+      <h2>hello</h2>
       <Signin />
     </div>
   );

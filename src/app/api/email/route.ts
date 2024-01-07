@@ -24,11 +24,20 @@ export async function POST(request: Request) {
     await transporter.sendMail({
       from: process.env.GRIEVANCE_EMAIL,
       to: data.email,
-      subject: "Welcome to our website",
+      subject: `Welcome to My Company, ${data.name}`,
       text: "Thank you for signing up!",
     });
-    console.log(data);
-    console.log(data.email);
+
+    // const mailOptions = {
+    //   from: '"My Company" <my@company.com>', // sender address
+    //   template: "email", // the name of the template file, i.e., email.handlebars
+    //   to: user.email,
+    //   subject: `Welcome to My Company, ${user.name}`,
+    //   context: {
+    //     name: user.name,
+    //     company: 'my company'
+    //   },
+    // };
     return NextResponse.json({ data: email });
   }
   NextResponse.error();
