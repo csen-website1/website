@@ -2,11 +2,12 @@
 import React, { useEffect, useState } from "react";
 import Signin from "@/components/Signin";
 import axios from "axios";
+import { buttonVariants } from "@/components/ui/button";
 
 export default function Page() {
   const [data, setData] = useState<any[]>([]);
 
-  useEffect(() => {
+  const handleClick = () => {
     try {
       const fetchData = async () => {
         const response = await axios.get("/api/getdata");
@@ -16,7 +17,7 @@ export default function Page() {
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  };
 
   console.log(data);
 
@@ -31,6 +32,9 @@ export default function Page() {
           <p>{item.email}</p>
         </div>
       ))}
+      <button onClick={handleClick} className={buttonVariants()}>
+        Get Data
+      </button>
     </div>
   );
 }
