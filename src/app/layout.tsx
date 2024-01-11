@@ -21,14 +21,16 @@ export const metadata: Metadata = {
     url: "https://csen-dz.com",
     description:
       "CSEN dz offers expert structural engineering and numerical analysis services to optimize your projects.",
-    images: ["/logo3.jpg"],
+    images: [
+      {
+        url: "/logo.png",
+        width: 500,
+        height: 500,
+        alt: "CSEN Logo",
+      },
+    ],
   },
-  twitter: {
-    title: "CSEN dz: Empowering Innovation in Structural Engineering",
-    description:
-      "Discover CSEN dz's cutting-edge services for structural engineering and numerical analysis. #structuralengineering #numericalanalysis",
-    images: "/logo3.jpg",
-  },
+  metadataBase: new URL("https://csen-dz.com"),
 };
 export default async function RootLayout({
   children,

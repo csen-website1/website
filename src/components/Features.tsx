@@ -70,14 +70,14 @@ function Features({}: Props) {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 m-6 shadow-lg  ">
           <Link
-            href={"https://1drv.ms/u/s!AjoKEUyTPe6ugz4fn7b4-1jpZujz?e=qQWJN8"}
+            href={"https://1drv.ms/u/s!AjoKEUyTPe6ug0AtJtfXi_bngjYb?e=wO3PaM"}
             className={buttonVariants()}
           >
             <IoMdDownload className="inline-block mr-2 animate-bounce" /> RPA
             Setup RPA Plug-in
           </Link>
           <Link
-            href={"https://1drv.ms/u/s!AjoKEUyTPe6ugz2JH0hKrsON0uGe?e=8pc9d5"}
+            href={"https://1drv.ms/u/s!AjoKEUyTPe6ugz8lzPRybCbIzG0h?e=VdPyCH"}
             className={cn(buttonVariants(), "")}
           >
             <IoMdDownload className="inline-block mr-2 animate-bounce" />
