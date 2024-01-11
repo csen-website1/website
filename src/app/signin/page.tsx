@@ -7,12 +7,15 @@ export default function Page() {
   const [data, setData] = useState<any[]>([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get("/api/getdata");
-      setData(response.data);
-    };
-
-    fetchData();
+    try {
+      const fetchData = async () => {
+        const response = await axios.get("/api/getdata");
+        setData(response.data);
+        fetchData();
+      };
+    } catch (err) {
+      console.log(err);
+    }
   }, []);
 
   console.log(data);
