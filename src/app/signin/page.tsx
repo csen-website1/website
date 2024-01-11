@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import Signin from "@/components/Signin";
 import axios from "axios";
-import { response } from "express";
 
 export default function Page() {
   const [data, setData] = useState<any[]>([]);
@@ -14,7 +13,7 @@ export default function Page() {
     };
 
     fetchData();
-  }, [response]);
+  }, []);
 
   console.log(data);
 

@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { redirect, usePathname } from "next/navigation";
-import { Session } from "inspector";
+import { useEffect, useState } from "react";
 
 const ACTIVE_ROUTE = "py-1 px-2 text-gray-300 bg-gray-700";
 const INACTIVE_ROUTE =
@@ -29,7 +29,16 @@ function AuthButton() {
 
 export default function Signin() {
   const pathname = usePathname();
-  
+  // const [data, setData] = useState<any[]>([]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await fetch("/api/getdata");
+  //     const data = await response.json();
+  //     console.log(data);
+  //     setData(data);
+  //   };
+  //   fetchData();
+  // });
   return (
     <div className="min-h-screen flex flex-col justify-center items-center w-2/12">
       <AuthButton />
@@ -41,7 +50,9 @@ export default function Signin() {
           </li>
         </Link>
         <Link href="/getData">
-          <li className={pathname === "/getData" ? ACTIVE_ROUTE : INACTIVE_ROUTE}>
+          <li
+            className={pathname === "/getData" ? ACTIVE_ROUTE : INACTIVE_ROUTE}
+          >
             GetData
           </li>
         </Link>
