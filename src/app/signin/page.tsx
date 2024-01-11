@@ -30,7 +30,7 @@ export default function Page() {
           <p>{item.name}</p>
           <p>{item.email}</p>
         </div>
-      }
+      ))}
     </div>
   );
 }
