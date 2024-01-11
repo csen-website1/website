@@ -24,6 +24,13 @@ export default function Page() {
     <div>
       <h2>hello</h2>
       <Signin />
+      {data.map((item) => (
+        <div key={item.id}>
+          <p>{item.id}</p>
+          <p>{item.name}</p>
+          <p>{item.email}</p>
+        </div>
+      }
     </div>
   );
 }
