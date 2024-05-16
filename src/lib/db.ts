@@ -1,7 +1,8 @@
 import mongoose, { ConnectOptions, Connection } from "mongoose";
 
 const connectToDatabase = async (): Promise<Connection | undefined> => {
-  const uri = process.env.MONGODB_URI;
+  const uri =
+    "mongodb+srv://csen-dz:csenblida@csen-users.57mosti.mongodb.net/csenUsers?retryWrites=true&w=majority";
 
   try {
     if (!uri) {
