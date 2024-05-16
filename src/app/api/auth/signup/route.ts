@@ -18,6 +18,7 @@ export async function POST(request: NextRequest) {
     userName,
     email,
     password: hashedPassword,
+    plan: "free",
   });
 
   return NextResponse.json({ user }, { status: 201 });

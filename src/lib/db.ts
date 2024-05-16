@@ -21,11 +21,11 @@ const connectToDatabase = async (): Promise<Connection | undefined> => {
       return connection.connection; // Return Mongoose connection object
     } else {
       console.log("Already connected to the database");
+      return mongoose.connection; // Return existing Mongoose connection object
     }
   } catch (error) {
     console.error("Error connecting to the database:", error);
     throw error;
   }
 };
-
 export default connectToDatabase;
