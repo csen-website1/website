@@ -4,6 +4,13 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer"; // Import the missing component
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 
 import SessionProvider from "@/components/SessionProvider";
 import { getServerSession } from "next-auth";
@@ -40,20 +47,51 @@ export default async function RootLayout({
   const session = await getServerSession();
   return (
     <html lang="en" className="h-full scroll-smooth ">
-      <body
-        className={cn(
-          "relative h-full font-sans antialiased overflow-x-hidden",
-          inter.className
-        )}
-      >
-        <Navbar />
-        <main className="relative flex flex-col min-h-screen">
-          <div className="flex-grow flex-1">
-            <SessionProvider session={session}>{children}</SessionProvider>
-          </div>
-        </main>
-        <Footer />
-      </body>
+      <ClerkProvider>
+        <body
+          className={cn(
+            "relative h-full font-sans antialiased overflow-x-hidden",
+            inter.className
+          )}
+        >
+          <Navbar />
+          <main className="relative flex flex-col min-h-screen">
+            
+            <div className="flex-grow flex-1">
+              <>{children}</>
+            </div>
+          </main>
+          <Footer />
+        </body>
+      </ClerkProvider>
     </html>
   );
 }
+// import {
+//   ClerkProvider,
+//   SignInButton,
+//   SignedIn,
+//   SignedOut,
+//   UserButton,
+// } from "@clerk/nextjs";
+// export default function RootLayout({
+//   children,
+// }: {
+//   children: React.ReactNode;
+// }) {
+//   return (
+//     <ClerkProvider>
+//       <html lang="en">
+//         <body>
+//           <SignedOut>
+//             <SignInButton />
+//           </SignedOut>
+//           <SignedIn>
+//             <UserButton />
+//           </SignedIn>
+//           {children}
+//         </body>
+//       </html>
+//     </ClerkProvider>
+//   );
+// }

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^5.0.12",
     "@hookform/resolvers": "^3.3.3",
     "@mui/lab": "^5.0.0-alpha.158",
     "@payloadcms/bundler-webpack": "^1.0.5",
