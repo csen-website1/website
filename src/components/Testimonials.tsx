@@ -1,48 +1,30 @@
 "use client";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { RxArrowLeft, RxArrowRight } from "react-icons/rx";
+import { Card, CardContent } from "./ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 type Props = {};
-const testimonials = [
-  {
-    testimonial:
-      "I'm a huge fan of this app, I've found it to be incredibly intuitive overall. Would definitely recommend this if you're looking for an app to make planning that bit easier.",
-    author: "John Doe",
-    authorImg: "https://source.unsplash.com/v2aKnjMbP_k/500x500",
-    authorMetadata: "Founder",
-  },
-  {
-    testimonial:
-      "This app has been pivotal for helping our team collaborate on tasks and new plans, I’d definitely recommend this if you’d like an intuitive planner app.",
-    author: "Emma Doe",
-    authorMetadata: "Founder",
-    authorImg: "https://source.unsplash.com/rDEOVtE7vOs/500x500",
-  },
-  {
-    testimonial:
-      "I'm a huge fan of this app, I've found it to be incredibly intuitive overall. Would definitely recommend this if you're looking for an app to make planning that bit easier.",
-    author: "John Doe",
-    authorImg: "https://source.unsplash.com/v2aKnjMbP_k/500x500",
-    authorMetadata: "Founder",
-  },
-  {
-    testimonial:
-      "This app has been pivotal for helping our team collaborate on tasks and new plans, I’d definitely recommend this if you’d like an intuitive planner app.",
-    author: "Emma Doe",
-    authorMetadata: "Founder",
-    authorImg: "https://source.unsplash.com/rDEOVtE7vOs/500x500",
-  },
-  {
-    testimonial:
-      "I absolutely love the features provided, and that I can create notes to each task also. It really helped streamline my workflow, I would definitely recommend it!",
-    author: "James Doe",
-    authorImg: "https://source.unsplash.com/pUhxoSapPFA/500x500",
-    authorMetadata: "Founder",
-  },
-];
+
+type testi = {
+  _id: string;
+  name: string;
+  occupation: string;
+  message: string;
+};
 
 const Testimonials = (props: Props) => {
+  const [testimonials, setTestimonials] = React.useState<testi[]>([]);
+  useEffect(() => {
+    const testimo = async () => {
+      const response = await fetch("/api/testimonials");
+      const data = await response.json();
+      setTestimonials(data);
+      console.log(data);
+    };
+    testimo();
+  }, []);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 24 });
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -58,39 +40,33 @@ const Testimonials = (props: Props) => {
         </h2>
 
         <div className="embla overflow-hidden flex" ref={emblaRef}>
-          <div className="embla__container flex flex-row ">
-            {testimonials.map((testimonialMetadata, index) => (
-              <div
-                key={index}
-                className="embla__slide flex-[0_0_33%] md:flex-[0_0_32%] mr-4 min-w-0
-                    bg-white shadow-sm border-solid border-2 
-                        border-gray-200 
-                        rounded-lg"
+          <div className="embla__container flex flex-row  gap-5 ">
+            {testimonials.map((i, index) => (
+              <Card
+                key={i._id}
+                className="w-full max-w-md bg-[url('/subtle-texture.png')] bg-cover bg-center p-6 shadow-lg"
               >
-                <div
-                  className="w-full flex flex-col bg-white px-6 py-6
-              rounded-2xl "
-                >
-                  <p className="pt-2 text-slate-600 leading-relaxed">
-                    {testimonialMetadata.testimonial}
-                  </p>
-                  <div className="flex flex-row pt-4 mt-2 items-center">
-                    <img
-                      className="rounded-full inline h-12 w-12 "
-                      src={testimonialMetadata.authorImg}
-                      alt="testimonial author"
-                    />
-                    <div className="flex flex-col ml-4">
-                      <h2 className="font-semibold text-base">
-                        {testimonialMetadata.author}
-                      </h2>
-                      <p className="text-gray-600">
-                        {testimonialMetadata.authorMetadata}
+                <CardContent className="space-y-4">
+                  <blockquote className="text-lg font-medium leading-relaxed">
+                    {'"' + i.message + '"'}
+                  </blockquote>
+                  <div className="flex items-center space-x-4">
+                    <Avatar>
+                      <AvatarImage src="https://avatar.iran.liara.r/boy?username=Ash" />
+                      <AvatarFallback>
+                        {i.name.split(" ")[0].split("")[0].toUpperCase()}{" "}
+                        {i.name.split(" ")[1]?.split("")[0]?.toUpperCase()}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <p className="text-sm font-medium"> {i.name}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {i.occupation}
                       </p>
                     </div>
                   </div>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>

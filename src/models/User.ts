@@ -11,6 +11,7 @@ interface User {
   phoneNumber: string;
   companyName?: string;
   message: [string];
+  createdAt: Date;
 }
 // interest: "La numérisation & l'automatisation",
 //     userType: "Agence",
@@ -66,6 +67,14 @@ const UserSchema: Schema = new Schema({
   message: {
     type: [Object],
     required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
   },
 });
 

@@ -1,5 +1,4 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { date } from "zod";
 
 export interface IEmail extends Document {
   email: string;
