@@ -10,7 +10,6 @@ import { buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useOnClickOutside } from "@/hooks/use-on-click-outside";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 interface Props {}
 
@@ -79,14 +78,6 @@ function Navbar({}: Props) {
                     </Link>
                   </motion.li>
                 ))}
-                <li className="text-black">
-                  <SignedOut>
-                    <SignInButton />
-                  </SignedOut>
-                  <SignedIn>
-                    <UserButton />
-                  </SignedIn>
-                </li>
               </ul>
             )}
             <ul className="hidden sm:block">
@@ -103,14 +94,6 @@ function Navbar({}: Props) {
                   </Link>
                 </li>
               ))}
-              <li className="text-black inline-block ml-10">
-                <SignedOut>
-                  <SignInButton />
-                </SignedOut>
-                <SignedIn>
-                  <UserButton />
-                </SignedIn>
-              </li>
             </ul>
           </div>
         </MaxWidthWraper>
