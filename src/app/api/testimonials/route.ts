@@ -1,6 +1,12 @@
+import { auth } from "@/auth";
 import Testimonials from "@/models/Testimonials";
 import { NextResponse } from "next/server";
+
 export async function POST(req: Request) {
+  const session = await auth();
+  if (!session) {
+    return NextResponse.json({ message: "Not authenticated" }, { status: 401 });
+  }
   const data = await req.json();
   const testimonial = new Testimonials(data);
 
@@ -21,9 +27,9 @@ export async function GET(req: Request) {
     const testimonials = await Testimonials.find({});
     return NextResponse.json(testimonials, { status: 200 });
   } catch (error) {
-    return {
-      status: 500,
-      body: { message: "Error fetching testimonials", error },
-    };
+    return NextResponse.json(
+      { message: "something went wrong ", err: error },
+      { status: 400 }
+    );
   }
 }
