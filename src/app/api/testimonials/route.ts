@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import connectToDatabase from "@/lib/db";
 import Testimonials from "@/models/Testimonials";
 import { NextResponse } from "next/server";
 
@@ -7,6 +8,8 @@ export async function POST(req: Request) {
   if (!session) {
     return NextResponse.json({ message: "Not authenticated" }, { status: 401 });
   }
+  await connectToDatabase();
+
   const data = await req.json();
   const testimonial = new Testimonials(data);
 
@@ -23,8 +26,10 @@ export async function POST(req: Request) {
 }
 
 export async function GET(req: Request) {
+  await connectToDatabase();
   try {
     const testimonials = await Testimonials.find({});
+    console.log(testimonials, " deadeadeadeda");
     return NextResponse.json(testimonials, { status: 200 });
   } catch (error) {
     return NextResponse.json(

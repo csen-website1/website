@@ -2,7 +2,7 @@ import mongoose, { ConnectOptions, Connection } from "mongoose";
 
 const connectToDatabase = async (): Promise<Connection | undefined> => {
   const uri =
-    "mongodb+srv://csen-dz:csenblida@csen-users.57mosti.mongodb.net/csenUsers?retryWrites=true&w=majority";
+    process.env.MONGODB_URI || process.env.MONGODB_URL || process.env.MONGO_URL;
 
   try {
     if (!uri) {

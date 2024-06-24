@@ -7,7 +7,7 @@ export interface TestoModel extends Document {
   createdAt: Date;
 }
 
-const testoSchema: Schema = new Schema<TestoModel>({
+const testosSchema: Schema<TestoModel> = new Schema<TestoModel>({
   name: { type: String, required: true },
   occupation: { type: String, default: "" },
   message: { type: String, required: true },
@@ -15,4 +15,5 @@ const testoSchema: Schema = new Schema<TestoModel>({
   createdAt: { type: Date, default: Date.now },
 });
 
-export default mongoose.models.Testo || model<TestoModel>("Testo", testoSchema);
+export default mongoose.models.Testos ||
+  model<TestoModel>("Testos", testosSchema);
