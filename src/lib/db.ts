@@ -1,7 +1,8 @@
 import mongoose, { ConnectOptions, Connection } from "mongoose";
 
 const connectToDatabase = async (): Promise<Connection | undefined> => {
-  const uri = process.env.MONGODB_URI;
+  const uri =
+    "mongodb+srv://csen-dz:csenblida@csen-users.57mosti.mongodb.net/csenUsers?retryWrites=true&w=majority";
 
   try {
     if (!uri) {
@@ -20,11 +21,11 @@ const connectToDatabase = async (): Promise<Connection | undefined> => {
       return connection.connection; // Return Mongoose connection object
     } else {
       console.log("Already connected to the database");
+      return mongoose.connection; // Return existing Mongoose connection object
     }
   } catch (error) {
     console.error("Error connecting to the database:", error);
     throw error;
   }
 };
-
 export default connectToDatabase;

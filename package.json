@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^5.0.12",
     "@hookform/resolvers": "^3.3.3",
     "@mui/lab": "^5.0.0-alpha.158",
     "@payloadcms/bundler-webpack": "^1.0.5",
@@ -32,6 +33,7 @@
     "@reduxjs/toolkit": "^2.0.1",
     "@vercel/blob": "^0.23.3",
     "axios": "^1.6.3",
+    "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "embla-carousel-react": "^8.0.0-rc17",
@@ -54,7 +56,9 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^20",
     "@types/nodemailer": "^6.4.14",
