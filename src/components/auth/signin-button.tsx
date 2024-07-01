@@ -1,3 +1,4 @@
+"use server";
 import { signIn, signOut } from "@/auth";
 import { Button } from "../ui/button";
 import { auth } from "@/auth";
