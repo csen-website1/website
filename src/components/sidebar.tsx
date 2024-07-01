@@ -52,7 +52,7 @@ import {
   PaginationItem,
 } from "@/components/ui/pagination";
 import Emails from "./messages";
-import { SignOut } from "./auth/signin-button";
+import AuthButton from "./auth/signin-button";
 import { LockClosedIcon } from "@radix-ui/react-icons";
 import { signOut } from "next-auth/react";
 import CreateTesto from "./add-testimonials";
@@ -155,19 +155,13 @@ export default function Sidebar() {
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link
-                  href="#"
-                  className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-                  prefetch={false}
-                >
-                  <LockClosedIcon
-                    onClick={async () => {
-                      await signOut();
-                    }}
-                    className="h-5 w-5"
-                  />
-                  <span className="sr-only">SignOut</span>
-                </Link>
+                <LockClosedIcon
+                  onClick={async () => {
+                    await signOut();
+                  }}
+                  className="h-5 w-5"
+                />
+                <span className="sr-only">SignOut</span>
               </TooltipTrigger>
               <TooltipContent side="right">Settings</TooltipContent>
             </Tooltip>
@@ -233,7 +227,7 @@ export default function Sidebar() {
                   <LineChartIcon className="h-5 w-5" />
                   Settings
                 </Link>
-                <SignOut />
+                <AuthButton />
               </nav>
             </SheetContent>
           </Sheet>

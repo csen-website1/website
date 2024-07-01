@@ -70,30 +70,6 @@ const Testimonials = (props: Props) => {
             ))}
           </div>
         </div>
-
-        <div className="flex justify-center mt-8">
-          <div>
-            <button
-              type="button"
-              className="mr-4 text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center 
-         "
-              onClick={scrollPrev}
-            >
-              <RxArrowLeft />
-              <span className="sr-only">Left arrow</span>
-            </button>
-
-            <button
-              type="button"
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center 
-          inline-flex items-center"
-              onClick={scrollNext}
-            >
-              <RxArrowRight />
-              <span className="sr-only">Right arrow</span>
-            </button>
-          </div>
-        </div>
       </div>
     </section>
   );

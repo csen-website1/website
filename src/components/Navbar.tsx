@@ -10,10 +10,12 @@ import { buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useOnClickOutside } from "@/hooks/use-on-click-outside";
+import { auth } from "@/auth";
 
 interface Props {}
 
-function Navbar({}: Props) {
+ function  Navbar({}: Props) {
+  
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const navRef = React.useRef<any>(null);
   useOnClickOutside(navRef, () => {
