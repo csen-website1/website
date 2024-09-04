@@ -130,7 +130,7 @@ const Form = () => {
                     type="text"
                     id="firstName"
                     {...register("firstName")}
-                    className="w-full p-2 mb-4"
+                    className="w-3/4 p-2 mb-4"
                   />
                   {errors.firstName && (
                     <span className="text-red-500 text-xs">
@@ -138,7 +138,7 @@ const Form = () => {
                     </span>
                   )}
                 </div>
-                <div className="w-full md:w-1/2">
+                <div className="w-full md:w-2/5">
                   <Label htmlFor="lastName" className="block mb-2">
                     Last Name
                   </Label>
@@ -219,85 +219,68 @@ const Form = () => {
                   </span>
                 )}
               </div>
-              <div className="mb-4">
-                <Label className="block mb-2">Vous êtes:</Label>
-                <div className="flex">
-                  {["Agence", "Société", "Bureau d'étude", "Etudiant"].map(
-                    (userType) => (
-                      <div key={userType}>
-                        <Input
-                          type="radio"
-                          id={userType.toLowerCase()}
-                          value={userType}
-                          {...register("userType")}
-                          className="mr-2 scale-50 border-none shadow-none"
-                        />
-                        <Label
-                          htmlFor={userType.toLowerCase()}
-                          className="mr-4"
-                        >
-                          {userType}
-                        </Label>
-                      </div>
-                    )
+              <div className="flex gap-16">
+                <div className="mb-4">
+                  <Label className="block mb-2">Vous êtes:</Label>
+                  <select
+                    id="userType"
+                    {...register("userType")}
+                    className="p-2 border border-ring"
+                  >
+                    <option value="Agence">Agence</option>
+                    <option value="Société">Société</option>
+                    <option value="Bureau d'étude">{"Bureau d'étude"}</option>
+                    <option value="Etudiant">Etudiant</option>
+                  </select>
+                  {errors.userType && (
+                    <span className="text-red-500 text-xs">
+                      {errors.userType.message}
+                    </span>
                   )}
                 </div>
-                {errors.userType && (
-                  <span className="text-red-500 text-xs">
-                    {errors.userType.message}
-                  </span>
-                )}
-              </div>
-              {watch("userType") &&
-                ["Agence", "Société", "Bureau d'étude"].includes(
-                  watch("userType")
-                ) && (
-                  <div className="mb-4">
-                    <Label htmlFor="companyName" className="block mb-2">
-                      The name of {formData.userType}
-                    </Label>
-                    <Input
-                      type="text"
-                      id="companyName"
-                      {...register("companyName")}
-                      className="w-full p-2"
-                    />
-                    {errors.companyName && (
-                      <span className="text-red-500 text-xs">
-                        {errors.companyName.message}
-                      </span>
-                    )}
-                  </div>
-                )}
-              <div className="mb-4 w-full">
-                <Label className="block mb-2">Vous êtes intéressé par:</Label>
-                <div className="flex flex-col">
-                  {[
-                    "La numérisation & l'automatisation",
-                    "Le cryptage & la sécurité des données",
-                    "La version Premium de RPA Plug-in",
-                    "La version Cloud de RPA Plug-in",
-                  ].map((interest) => (
-                    <div
-                      className="flex justify-between w-full items-center  my-1"
-                      key={interest}
-                    >
-                      <Label
-                        htmlFor={interest.toLowerCase().replace(/ /g, "-")}
-                        className="mr-4 basis-2/4"
-                      >
-                        {interest}
+                {watch("userType") &&
+                  ["Agence", "Société", "Bureau d'étude"].includes(
+                    watch("userType")
+                  ) && (
+                    <div className="mb-4">
+                      <Label htmlFor="companyName" className="block mb-2">
+                        le nom de {formData.userType}
                       </Label>
                       <Input
-                        type="radio"
-                        id={interest.toLowerCase().replace(/ /g, "-")}
-                        value={interest}
-                        {...register("interest")}
-                        className="scale-50 border-none shadow-none basis-1/5"
+                        type="text"
+                        id="companyName"
+                        {...register("companyName")}
+                        className="w-full  p-2 "
                       />
+                      {errors.companyName && (
+                        <span className="text-red-500 text-xs">
+                          {errors.companyName.message}
+                        </span>
+                      )}
                     </div>
-                  ))}
-                </div>
+                  )}
+              </div>
+
+              <div className="mb-4 ">
+                <Label className="block mb-2">Vous êtes intéressé par:</Label>
+                <select
+                  id="interest"
+                  {...register("interest")}
+                  className="w-full sm:w-1/3 p-2 border border-ring"
+                >
+                  <option value="La numérisation & l'automatisation">
+                    {"La numérisation & l'automatisation"}
+                  </option>
+                  <option value="Le cryptage & la sécurité des données">
+                    Le cryptage & la sécurité des données
+                  </option>
+                  <option value="La version Premium de RPA Plug-in">
+                    La version Premium de RPA Plug-in
+                  </option>
+                  <option value="La version Cloud de RPA Plug-in">
+                    La version Cloud de RPA Plug-in
+                  </option>
+                </select>
                 {errors.interest && (
                   <span className="text-red-500 text-xs">
                     {errors.interest.message}

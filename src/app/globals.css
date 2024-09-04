@@ -2,9 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-body,html{
+body,
+html {
   scroll-behavior: smooth;
-  
+}
+::-ms-thumb {
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+}
+::-webkit-scrollbar {
+  width: 10px;
 }
 
 @layer base {
@@ -53,7 +70,6 @@ body,html{
     --ring: 224.3 76.3% 48%;
   }
 }
-
 
 @layer base {
   * {

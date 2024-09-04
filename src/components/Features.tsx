@@ -69,20 +69,7 @@ function Features({}: Props) {
           )}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 m-6 shadow-lg  ">
-          <Link
-            href={"https://drive.google.com/file/d/1ZaKDtJqGzOjai1ab4n9WBoKbpm_716zp/view?usp=sharing"}
-            className={buttonVariants()}
-          >
-            <IoMdDownload className="inline-block mr-2 animate-bounce" /> RPA
-            Setup RPA Plug-in
-          </Link>
-          <Link
-            href={"https://drive.google.com/file/d/1PUQkOYFZlNeQIqyzaLpvKbEuCnMHRHYY/view?usp=sharing"}
-            className={cn(buttonVariants(), "")}
-          >
-            <IoMdDownload className="inline-block mr-2 animate-bounce" />
-            {"Formulaire d'inscription "}
-          </Link>
+         
         </div>
       </MaxWidthWraper>
     </div>

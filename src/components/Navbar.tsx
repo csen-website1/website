@@ -10,12 +10,20 @@ import { buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useOnClickOutside } from "@/hooks/use-on-click-outside";
-import { auth } from "@/auth";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
 
 interface Props {}
 
- function  Navbar({}: Props) {
-  
+function Navbar({}: Props) {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const navRef = React.useRef<any>(null);
   useOnClickOutside(navRef, () => {
@@ -31,13 +39,23 @@ interface Props {}
       name: "RPA Plug-in",
       href: "#plugin",
     },
-    {
-      name: "Télécharger",
-      href: "#download",
-    },
+
     {
       name: "Contact",
       href: "/contact",
+    },
+  ];
+  const components: { title: string; href: string; description: string }[] = [
+    {
+      title: "RPA Setup",
+      href: "/docs/primitives/alert-dialog",
+      description: "télecharger RPA setup.",
+    },
+    {
+      title: "fiche descriptive",
+      href: "/docs/primitives/hover-card",
+      description:
+        "Téléchargez RPA Plugin et découvrez une solution innovante qui vous permet de [bénéfice principal du produit ou service]. Que vous soyez un particulier ou une entreprise, notre application est conçue pour répondre à vos besoins spécifiques en toute simplicité.",
     },
   ];
   return (
@@ -53,9 +71,9 @@ interface Props {}
 
             <button onClick={toggleMenu}>
               {isMenuOpen ? (
-                <IoMdClose className="block sm:hidden" />
+                <IoMdClose className="block sm:hidden text-neutral-900" />
               ) : (
-                <RxHamburgerMenu className="block sm:hidden" />
+                <RxHamburgerMenu className="block sm:hidden text-neutral-900" />
               )}
             </button>
             {isMenuOpen && (
@@ -80,23 +98,82 @@ interface Props {}
                     </Link>
                   </motion.li>
                 ))}
+                <li></li>
               </ul>
             )}
-            <ul className="hidden sm:block">
-              {links.map((link) => (
-                <li className="inline-block ml-10" key={link.name}>
-                  <Link
-                    className={cn(
-                      buttonVariants({ variant: "ghost" }),
-                      "hover:bg-transparent text-blue-900"
-                    )}
-                    href={link.href}
-                  >
-                    {link.name}
+            <NavigationMenu className="text-black hidden sm:block">
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="bg-transparent">
+                    Get Started
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                      <li className="row-span-3">
+                        <NavigationMenuLink asChild>
+                          <a
+                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                            href="#video"
+                          >
+                            <div className="mb-2 mt-4 text-lg font-medium">
+                              RPA Plug-in
+                            </div>
+                            <p className="text-sm leading-tight text-muted-foreground">
+                              Logiciel d’analyse des structures en Béton Armé
+                              selon les DTR Algérien Travail en collaboration
+                              avec CSI-ETABS.
+                            </p>
+                          </a>
+                        </NavigationMenuLink>
+                      </li>
+                      <ListItem href="#introduction" title="Introduction">
+                        Avec notre solution qui est basée sur la numérisation
+                        des DTR {"et l'automatisation "}du calcul nous pouvons à
+                        la fois augmenter la croissance de la productive ainsi
+                        qu’arrivé à une étude parasismique qui est conforme à la
+                        règlementation {"locale d'une manière"} précise, rapide
+                        et fiable tout en choisissant la meilleure proposition
+                        économique.
+                      </ListItem>
+                      <ListItem href="#install" title="Installation">
+                        {"Commencez le processus d'installation de RPA Plugin."}
+                      </ListItem>
+                      {/* <ListItem
+                        href="/docs/primitives/typography"
+                        title="Typography"
+                      >
+                        Styles for headings, paragraphs, lists...etc
+                      </ListItem> */}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="bg-transparent text-black">
+                    Télécharger
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-3 p-6 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                      {components.map((component) => (
+                        <ListItem
+                          key={component.title}
+                          title={component.title}
+                          href={component.href}
+                        >
+                          {component.description}
+                        </ListItem>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/contact" legacyBehavior passHref>
+                    <NavigationMenuLink className={"text-black"}>
+                      Contact
+                    </NavigationMenuLink>
                   </Link>
-                </li>
-              ))}
-            </ul>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
           </div>
         </MaxWidthWraper>
       </div>
@@ -105,3 +182,28 @@ interface Props {}
 }
 
 export default Navbar;
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+ListItem.displayName = "ListItem";

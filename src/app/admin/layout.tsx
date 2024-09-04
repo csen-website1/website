@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import Sidebar from "@/components/sidebar";
 import { cn } from "@/lib/utils";
 import { Inter } from "next/font/google";
 import { redirect } from "next/navigation";
@@ -19,9 +20,10 @@ export default function AdminLayout({
           inter.className
         )}
       >
-        <main className="relative flex flex-col min-h-screen">
+        <div className="px-16">
+          <Sidebar />
           <div className="flex-grow flex-1">{children}</div>
-        </main>
+        </div>
       </body>
     </html>
   );

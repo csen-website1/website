@@ -29,7 +29,7 @@ export async function GET(req: Request) {
   await connectToDatabase();
   try {
     const testimonials = await Testimonials.find({});
-    console.log(testimonials, " deadeadeadeda");
+
     return NextResponse.json(testimonials, { status: 200 });
   } catch (error) {
     return NextResponse.json(

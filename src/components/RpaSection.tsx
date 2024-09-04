@@ -88,7 +88,10 @@ const RpaSection = (props: Props) => {
             économique.`}
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 my-24 mx-auto w-full gap-6">
+        <div
+          id="introduction"
+          className="grid grid-cols-1 md:grid-cols-2 my-24 mx-auto w-full gap-6"
+        >
           {products.map((product, index) => (
             <CardItem
               {...product}
@@ -110,11 +113,12 @@ const RpaSection = (props: Props) => {
           </Link>
         </h3>
         <iframe
+          id="video"
           className="mx-auto  bg-slate-500  w-full aspect-video  my-4"
           src="https://www.youtube.com/embed/0-fNsVeN6ig?si=3mWbXY1sYHpgD_IN"
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        ></iframe>
+        />
       </MaxWidthWraper>
     </div>
   );

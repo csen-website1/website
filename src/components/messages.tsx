@@ -40,7 +40,7 @@ function Emails({}: Props) {
       try {
         const response = await fetch("/api/getData");
         const data = await response.json();
-        console.log(data);
+
         setUser(data);
       } catch (error: any) {
         setError(error);
