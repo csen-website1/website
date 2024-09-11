@@ -1,4 +1,5 @@
 "use client";
+import MessageBased from "@/components/component/message-based";
 import React from "react";
 import { useEffect, useState } from "react";
 
@@ -8,7 +9,8 @@ export default function Page({ params }: { params: { id: string } }) {
   const [user, setUser] = useState<any>([{ message: [] }]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [filterUser, setFilterUser] = useState([]);
+  const [filterUser, setFilterUser] = useState<any>([]);
+  const id = params.id[0];
 
   useEffect(() => {
     const fetchEmails = async () => {
@@ -20,40 +22,30 @@ export default function Page({ params }: { params: { id: string } }) {
         setError(error);
         console.error(error);
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     };
     fetchEmails();
   }, [params.id]);
-
+  console.log(filterUser);
   useEffect(() => {
     console.log(user);
-    console.log(params.id);
-    setFilterUser(user?.filter((msg: any) => msg._id === params.id[0]));
+    setFilterUser(user.filter((user: any) => user._id === id));
+    if (filterUser) {
+      setLoading(false);
+    }
+  }, [params.id, user]);
 
-    console.log(filterUser);
-  }, [user]);
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div>
-      {filterUser?.map((user: any) => (
-        <div
-          className="flex items-center p-10 gap-3 bg-slate-200"
-          key={user.id}
-        >
-          <h2>{`${user.firstName}  ${user.lastName}`}</h2>
-          <p>{user.userType}</p>
-          <p>messages : </p>
-          <ul>
-            {user.message.map((msg: any, index: number) => (
-              <li key={index}>
-                {msg.text} <br />
-                {msg.date}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      {" "}
+      <MessageBased
+        name={filterUser[0]?.firstName + " " + filterUser[0]?.lastName}
+        type={filterUser[0]?.userType}
+        message={filterUser[0]?.message}
+      />
     </div>
   );
 }
