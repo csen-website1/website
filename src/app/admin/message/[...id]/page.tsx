@@ -45,6 +45,7 @@ export default function Page({ params }: { params: { id: string } }) {
         name={filterUser[0]?.firstName + " " + filterUser[0]?.lastName}
         type={filterUser[0]?.userType}
         message={filterUser[0]?.message}
+        email={filterUser[0]?.email}
       />
     </div>
   );

@@ -6,15 +6,13 @@ export interface Layout {
   // Add more properties as needed
 }
 export interface LayoutModel extends Document {
-  title: string;
-  hero: string;
   videoUrl: string;
+  downloadUrl: string;
 }
 
 const LayoutSchema: Schema = new Schema({
-  name: { type: String, required: false },
-  description: { type: String, required: false },
-  videpUrl: { type: String, required: true },
+  videpUrl: { type: String },
+  downloadUrl: { type: String },
   // Add more properties as needed
 });
 

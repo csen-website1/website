@@ -30,9 +30,11 @@ export default function MessageBased({
   name,
   type,
   message,
+  email,
 }: {
   name: string;
   type: string;
+  email: string;
   message: {
     text: string;
     date: string;
@@ -49,6 +51,7 @@ export default function MessageBased({
         <div>
           <h1 className="text-2xl font-bold">{name}</h1>
           <div className="text-sm text-muted-foreground">{type}</div>
+          <div className="text-sm text-muted-foreground">{email}</div>
         </div>
       </header>
       <Card>
@@ -58,10 +61,8 @@ export default function MessageBased({
           </div>
           {message?.map((msg, index) => (
             <>
-              <p key={index + "message"} className="text-muted-foreground">
-                {msg.text}
-              </p>
-              <p>{msg.date}</p>
+              <p key={index + "message"}>{msg.text}</p>
+              <p className="text-muted-foreground">{msg.date.split("T")[0]}</p>
             </>
           ))}
         </CardContent>

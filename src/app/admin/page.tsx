@@ -1,25 +1,12 @@
 import { auth } from "@/auth";
-import Sidebar from "@/components/sidebar";
-import { redirect } from "next/navigation";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardFooter,
-  CardContent,
-} from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 
-import { LockClosedIcon } from "@radix-ui/react-icons";
-import { signOut } from "next-auth/react";
-import { Button } from "@/components/ui/button";
+import { redirect } from "next/navigation";
+
 import Emails from "@/components/messages";
 import CreateTesto from "@/components/add-testimonials";
 
 export default async function Page() {
   const user = await auth();
-  console.log(user);
   if (!user) redirect("/api/auth/signin");
 
   return (
@@ -29,5 +16,5 @@ export default async function Page() {
       </div>
       <CreateTesto />
     </main>
-  );
+  ); 
 }

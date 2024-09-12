@@ -27,8 +27,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import AuthButton from "./auth/signin-button";
-import { LockClosedIcon } from "@radix-ui/react-icons";
-import { signOut } from "next-auth/react";
 
 export default function Sidebar() {
   return (
@@ -74,7 +72,7 @@ export default function Sidebar() {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link
-                    href="#"
+                    href="admin/message"
                     className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                     prefetch={true}
                   >
@@ -92,10 +90,10 @@ export default function Sidebar() {
                     prefetch={true}
                   >
                     <UsersIcon className="h-5 w-5" />
-                    <span className="sr-only">Customers</span>
+                    <span className="sr-only">Testimonials</span>
                   </Link>
                 </TooltipTrigger>
-                <TooltipContent side="right">Customers</TooltipContent>
+                <TooltipContent side="right">Testimonials</TooltipContent>
               </Tooltip>
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -165,7 +163,7 @@ export default function Sidebar() {
                   Dashboard
                 </Link>
                 <Link
-                  href="#"
+                  href="/admin/message"
                   className="flex items-center gap-4 px-2.5 text-foreground"
                   prefetch={true}
                 >
@@ -204,7 +202,7 @@ export default function Sidebar() {
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link href="#" prefetch={true}>
+                  <Link href="/admin" prefetch={true}>
                     Dashboard
                   </Link>
                 </BreadcrumbLink>
@@ -212,7 +210,7 @@ export default function Sidebar() {
               <BreadcrumbSeparator />
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link href="#" prefetch={true}>
+                  <Link href="/admin/message" prefetch={true}>
                     Orders
                   </Link>
                 </BreadcrumbLink>
