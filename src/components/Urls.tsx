@@ -70,7 +70,7 @@ function Urls({}: Props) {
             className="border border-gray-300 rounded-md py-2"
             name="videoUrl"
             value={formData.videoUrl}
-            defaultValue={formData.videoUrl}
+            
             onChange={handleChange}
           />
         </div>

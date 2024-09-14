@@ -33,16 +33,25 @@ function Navbar({}: Props) {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  const [data, setDate] = useState({});
+  const [data, setData] = useState<any>({});
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await fetch("/api/layout");
-        const resData = res.json();
-        setData(resData);
+        if (res.ok) {
+          const data = await res.json();
+
+          setData({
+            videoUrl: data[0].videoUrl,
+            downloadUrl: data[0].downloadUrl,
+            fichDesUrl: data[0].fichDesUrl,
+          });
+        } else {
+          console.error("Failed to fetch data");
+        }
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
     fetchData();
@@ -66,7 +75,7 @@ function Navbar({}: Props) {
   const components: { title: string; href: string; description: string }[] = [
     {
       title: " Setup RPA Plug-in",
-      href: data?.downloadUrl,
+      href: data.downloadUrl,
       description: "Le Fichie D'installation .",
     },
     {
@@ -130,7 +139,7 @@ function Navbar({}: Props) {
                         <NavigationMenuLink asChild>
                           <a
                             className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                            href="#plugin"
+                            href="#hero"
                           >
                             <div className="mb-2 mt-4 text-lg font-medium">
                               RPA Plug-in
@@ -169,7 +178,7 @@ function Navbar({}: Props) {
                     Télécharger
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-6 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                    <ul className="grid w-[400px] gap-3 p-6 md:w-[500px] md:grid-cols-1 lg:w-[600px] ">
                       {components.map((component) => (
                         <ListItem
                           key={component.title}

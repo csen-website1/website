@@ -10,10 +10,13 @@ function Hero({}: Props) {
   return (
     <div className="bg-[url(/images/background.svg)] bg-no-repeat bg-cover bg-center bg-muted  ">
       <div className="flex justify-center items-center min-h-screen ">
-        <MaxWidthWraper classNme="h-full">
+        <MaxWidthWraper className="h-full">
           <div className="flex flex-col md:flex-row items-center h-full z-10 relative text-center ">
             <div className="flex flex-col  basis-full sm:basis-3/6 sm:mt-20  sm:px-0 px-5 mt-24">
-              <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl my-4 ">
+              <h1
+                id={"hero"}
+                className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl my-4 "
+              >
                 <span className="">
                   With
                   <AnimatedText
