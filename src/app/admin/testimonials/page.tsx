@@ -42,7 +42,8 @@ export default function Component() {
       }
       alert("Testimonial updated successfully");
     } catch (error) {
-      alert("Failed to update testimonial");
+      console.log(error);
+
     }
   };
 
@@ -57,7 +58,8 @@ export default function Component() {
       setTestimonials((prev) => prev.filter((t: any) => t._id !== id));
       alert("Testimonial deleted successfully");
     } catch (error) {
-      alert("Failed to delete testimonial");
+           console.log(error);
+
     }
   };
 

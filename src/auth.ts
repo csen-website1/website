@@ -16,7 +16,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       async authorize(credentials): Promise<any | null> {
         if (
           credentials.username === "admin" &&
-          credentials.password === "admin"
+          credentials.password === "280cfc04233c6"
         ) {
           return { id: "1", name: "Admin", role: "admin" };
         } else {

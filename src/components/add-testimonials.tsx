@@ -32,11 +32,12 @@ export default function CreateTesto() {
           message: "",
         });
       } else {
-        alert("Failed to create testimonial");
+             console.log("error");
+
       }
     } catch (error) {
       console.error(error);
-      alert("Failed to create testimonial");
+      
     }
   };
   return (

@@ -44,7 +44,7 @@ const schema = z.object({
     .string()
     .min(1)
     .regex(/^[0-9]{10}$/),
-  userType: z.enum(["Agence", "Société", "Bureau d'étude", "Etudiant"]),
+  userType: z.enum(["Agence", "Société", "Bureau d'étude", "Étudiant"]),
   companyName: z.string().min(1).optional(),
   interest: z.enum([
     "La numérisation & l'automatisation",
@@ -94,7 +94,7 @@ const Form = () => {
     try {
       setSubmitting(true);
       const response = await axios.post("/api/submit", data);
-      setRes(response.data.messag);
+      setRes(response.data.message);
       setState(true);
     } catch (e: any) {
       console.error(e);
@@ -103,7 +103,7 @@ const Form = () => {
     } finally {
       setSubmitting(false);
 
-      // reset the form after submittin
+      // reset the form after submitting
       setTimeout(() => {
         setAlert(true);
       }, 1000);
@@ -124,7 +124,7 @@ const Form = () => {
               <div className="flex flex-wrap">
                 <div className="w-full md:w-1/2 gap-4">
                   <Label htmlFor="firstName" className="block mb-2">
-                    First Name
+                    Prénom
                   </Label>
                   <Input
                     type="text"
@@ -140,7 +140,7 @@ const Form = () => {
                 </div>
                 <div className="w-full md:w-2/5">
                   <Label htmlFor="lastName" className="block mb-2">
-                    Last Name
+                    Nom
                   </Label>
                   <Input
                     type="text"
@@ -157,7 +157,7 @@ const Form = () => {
               </div>
               <div className="mb-4">
                 <Label htmlFor="jobTitle" className="block mb-2">
-                  Job Title
+                  Titre du poste
                 </Label>
                 <Input
                   type="text"
@@ -189,7 +189,7 @@ const Form = () => {
               </div>
               <div className="mb-4">
                 <Label htmlFor="address" className="block mb-2">
-                  Address
+                  Adresse
                 </Label>
                 <Input
                   type="text"
@@ -205,7 +205,7 @@ const Form = () => {
               </div>
               <div className="mb-4">
                 <Label htmlFor="phoneNumber" className="block mb-2">
-                  Phone Number
+                  Numéro de téléphone
                 </Label>
                 <Input
                   type="text"
@@ -230,7 +230,7 @@ const Form = () => {
                     <option value="Agence">Agence</option>
                     <option value="Société">Société</option>
                     <option value="Bureau d'étude">{"Bureau d'étude"}</option>
-                    <option value="Etudiant">Etudiant</option>
+                    <option value="Étudiant">Étudiant</option>
                   </select>
                   {errors.userType && (
                     <span className="text-red-500 text-xs">
@@ -314,7 +314,7 @@ const Form = () => {
                 ) : (
                   <>
                     <EnvelopeOpenIcon className="mr-4 w-5 h-5 text-white" />{" "}
-                    Submit
+                    Soumettre
                   </>
                 )}
               </Button>

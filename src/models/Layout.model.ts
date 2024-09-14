@@ -1,19 +1,23 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-export interface Layout {
-  name: string;
-  description: string;
-  // Add more properties as needed
-}
 export interface LayoutModel extends Document {
   videoUrl: string;
   downloadUrl: string;
+  fichDesUrl: string;
 }
 
 const LayoutSchema: Schema = new Schema({
-  videpUrl: { type: String },
+  videoUrl: {
+    type: String,
+    default: "https://www.youtube.com/watch?v=6v2L2UGZJAM",
+  },
   downloadUrl: { type: String },
-  // Add more properties as needed
+  fichDesUrl: { type: String },
 });
 
-export default mongoose.model<LayoutModel>("Layout", LayoutSchema);
+export const LayoutModel =
+  mongoose.models.LayoutModel ||
+  mongoose.model<LayoutModel>("LayoutModel", LayoutSchema);
+
+// export const UserModel =
+//   mongoose.models.UserModel || mongoose.model<User>("UserModel", UserSchema);

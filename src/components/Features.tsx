@@ -10,10 +10,6 @@ import {
   AiOutlineCodeSandbox,
 } from "./ui/Icons";
 import MaxWidthWraper from "./MaxWidthWraper";
-import { Button, buttonVariants } from "./ui/button";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { IoMdDownload } from "react-icons/io";
 
 const features = [
   {
@@ -68,9 +64,7 @@ function Features({}: Props) {
             })
           )}
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 m-6 shadow-lg  ">
-         
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 m-6 shadow-lg  "></div>
       </MaxWidthWraper>
     </div>
   );

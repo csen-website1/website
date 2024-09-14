@@ -35,6 +35,26 @@ const products = [
 ];
 const RpaSection = (props: Props) => {
   const controls = useAnimation();
+  const [videoUrl, setVideoUrl] = React.useState("");
+  const [fichDesUrl, setFichDesUrl] = React.useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/api/layout");
+        if (res.ok) {
+          const data = await res.json();
+          setVideoUrl(data[0].videoUrl);
+          setFichDesUrl(data[0].fichDesUrl);
+        } else {
+          console.error("Failed to fetch data");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const ref = useRef(null);
   const inView = useInView(ref);
@@ -100,11 +120,13 @@ const RpaSection = (props: Props) => {
             />
           ))}
         </div>
-        <h3 className="text-center">
+        <h3 className="text-center text-3xl my-9">
           Besoin plus de detail ?{" "}
           <Link
             href={
-              "https://drive.google.com/file/d/1fUAGST-Euq8_933g-68N5U_S2XbAKSf-/view"
+              fichDesUrl
+                ? fichDesUrl
+                : "https://drive.google.com/file/d/1fUAGST-Euq8_933g-68N5U_S2XbAKSf-/view"
             }
             className="text-primary/50"
           >
@@ -115,7 +137,11 @@ const RpaSection = (props: Props) => {
         <iframe
           id="video"
           className="mx-auto  bg-slate-500  w-full aspect-video  my-4"
-          src="https://www.youtube.com/embed/0-fNsVeN6ig?si=3mWbXY1sYHpgD_IN"
+          src={
+            videoUrl
+              ? videoUrl
+              : "https://www.youtube.com/embed/0-fNsVeN6ig?si=3mWbXY1sYHpgD_IN"
+          }
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         />

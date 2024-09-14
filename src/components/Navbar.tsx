@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MaxWidthWraper from "./MaxWidthWraper";
 import Link from "next/link";
 import Image from "next/image";
@@ -33,11 +33,29 @@ function Navbar({}: Props) {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  const [data, setDate] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/api/layout");
+        const resData = res.json();
+        setData(resData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const links = [
     {
       name: "RPA Plug-in",
       href: "#plugin",
+    },
+    {
+      name: "",
+      href: " ",
     },
 
     {
@@ -47,15 +65,14 @@ function Navbar({}: Props) {
   ];
   const components: { title: string; href: string; description: string }[] = [
     {
-      title: "RPA Setup",
-      href: "/docs/primitives/alert-dialog",
-      description: "télecharger RPA setup.",
+      title: " Setup RPA Plug-in",
+      href: data?.downloadUrl,
+      description: "Le Fichie D'installation .",
     },
     {
-      title: "fiche descriptive",
-      href: "/docs/primitives/hover-card",
-      description:
-        "Téléchargez RPA Plugin et découvrez une solution innovante qui vous permet de [bénéfice principal du produit ou service]. Que vous soyez un particulier ou une entreprise, notre application est conçue pour répondre à vos besoins spécifiques en toute simplicité.",
+      title: "Fiche Descriptive",
+      href: data?.fichDesUrl,
+      description: "Documenet PDF pour consulter le sommaire du logiciel .",
     },
   ];
   return (
@@ -113,7 +130,7 @@ function Navbar({}: Props) {
                         <NavigationMenuLink asChild>
                           <a
                             className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                            href="#video"
+                            href="#plugin"
                           >
                             <div className="mb-2 mt-4 text-lg font-medium">
                               RPA Plug-in
@@ -126,7 +143,7 @@ function Navbar({}: Props) {
                           </a>
                         </NavigationMenuLink>
                       </li>
-                      <ListItem href="#introduction" title="Introduction">
+                      <ListItem href="#plugin" title="Introduction">
                         Avec notre solution qui est basée sur la numérisation
                         des DTR {"et l'automatisation "}du calcul nous pouvons à
                         la fois augmenter la croissance de la productive ainsi
@@ -135,7 +152,7 @@ function Navbar({}: Props) {
                         et fiable tout en choisissant la meilleure proposition
                         économique.
                       </ListItem>
-                      <ListItem href="#install" title="Installation">
+                      <ListItem href="#video" title="Installation">
                         {"Commencez le processus d'installation de RPA Plugin."}
                       </ListItem>
                       {/* <ListItem

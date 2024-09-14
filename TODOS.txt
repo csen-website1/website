@@ -1,11 +1,5 @@
 
 
-#########
-Contact ///
-
-CSEN MAJ 
-and french 
-
 ICON ===
 
 
@@ -24,8 +18,7 @@ NAV BAR
  
  ===
 
- Make it larger ...
- and space 
+
 
  ========
  

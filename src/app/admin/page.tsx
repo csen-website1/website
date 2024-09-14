@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 
 import Emails from "@/components/messages";
 import CreateTesto from "@/components/add-testimonials";
+import Urls from "@/components/Urls";
 
 export default async function Page() {
   const user = await auth();
@@ -15,6 +16,9 @@ export default async function Page() {
         <Emails />
       </div>
       <CreateTesto />
+      <div>
+        <Urls />
+      </div>
     </main>
-  ); 
+  );
 }
