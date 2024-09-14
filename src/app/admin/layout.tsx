@@ -13,18 +13,11 @@ export default function AdminLayout({
   const session = auth();
   if (!session) redirect("/api/auth/signin");
   return (
-    <html lang="en" className="h-full scroll-smooth ">
-      <body
-        className={cn(
-          "relative h-full font-sans antialiased overflow-x-hidden",
-          inter.className
-        )}
-      >
+   
         <div className="px-16">
           <Sidebar />
           <div className="flex-grow flex-1">{children}</div>
         </div>
-      </body>
-    </html>
+     
   );
 }

@@ -27,7 +27,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FileIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { AiOutlineMail } from "react-icons/ai";
+import { AiFillDelete, AiOutlineMail } from "react-icons/ai";
 
 type Props = {};
 
@@ -47,7 +47,6 @@ function Page({}: Props) {
 
         setUser(data);
         console.log(data);
-        // filterUser(data);
       } catch (error: any) {
         setError(error);
         console.error(error);
@@ -76,10 +75,10 @@ function Page({}: Props) {
   const lastWeek = new Date();
   lastWeek.setDate(lastWeek.getDate() - 7);
 
-  const filteredUser = User.filter((user: any) => {
-    const userUpdatedAt = new Date(user.updatedAt);
-    return userUpdatedAt >= lastWeek;
-  });
+  // const filteredUser = User.filter((user: any) => {
+  //   const userUpdatedAt = new Date(user.updatedAt);
+  //   return userUpdatedAt >= lastWeek;
+  // });
 
   return (
     <Tabs defaultValue="week">
@@ -132,7 +131,7 @@ function Page({}: Props) {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {filteredUser.map((user: any) => (
+                {User.map((user: any) => (
                   <TableRow className="bg-accent" key={user._id}>
                     <TableCell>
                       <div className="font-medium">
@@ -157,13 +156,22 @@ function Page({}: Props) {
                       </Badge>
                     </TableCell>
                     <TableCell className="hidden md:table-cell">
-                      {user.createdAt.split("T")[0]}
+                      {user.updatedAt.split("T")[0]}
                     </TableCell>
                     <TableCell className="text-right">
                       <Link href={`/admin/message/${user._id}`}>
                         {" "}
                         <AiOutlineMail />
                       </Link>
+                      <button
+                        onClick={() => {
+                          fetch(`/api/getData/${user._id}`, {
+                            method: "DELETE",
+                          });
+                        }}
+                      >
+                        <AiFillDelete className="text-red-600" />
+                      </button>
                     </TableCell>
                   </TableRow>
                 ))}
