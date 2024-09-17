@@ -122,29 +122,20 @@ const RpaSection = (props: Props) => {
         </div>
         <h3 className="text-center text-3xl my-9">
           Besoin plus de detail ?{" "}
-          <Link
-            href={
-              fichDesUrl
-                ? fichDesUrl
-                : "https://drive.google.com/file/d/1fUAGST-Euq8_933g-68N5U_S2XbAKSf-/view"
-            }
-            className="text-primary/50"
-          >
+          <Link href={fichDesUrl} className="text-primary/50">
             {" "}
             Telecharger la fiche descriptive
           </Link>
         </h3>
-        <iframe
-          id="video"
-          className="mx-auto  bg-slate-500  w-full aspect-video  my-4"
-          src={
-            videoUrl
-              ? videoUrl
-              : "https://www.youtube.com/embed/HJug1KZSor8?si=-2gWWIlqkEZ7-5wL"
-          }
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        />
+        {videoUrl && (
+          <iframe
+            id="video"
+            className="mx-auto  bg-slate-500  w-full aspect-video  my-4"
+            src={videoUrl}
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          />
+        )}
       </MaxWidthWraper>
     </div>
   );

@@ -29,11 +29,10 @@ function Urls({}: Props) {
             fichDesUrl: data[0].fichDesUrl,
           });
         } else {
-          alert("Failed to fetch data");
+          console.error("Failed to fetch data");
         }
       } catch (error) {
         console.error(error);
-        alert("Failed to fetch data");
       }
     };
     fetchData();
@@ -51,11 +50,10 @@ function Urls({}: Props) {
       if (res.ok) {
         alert("Data saved successfully");
       } else {
-        alert("Failed to save data");
+        console.error("Failed to save data");
       }
     } catch (error) {
       console.error(error);
-      alert("Failed to save data");
     }
   };
 
