@@ -140,7 +140,7 @@ const RpaSection = (props: Props) => {
           src={
             videoUrl
               ? videoUrl
-              : "https://www.youtube.com/embed/0-fNsVeN6ig?si=3mWbXY1sYHpgD_IN"
+              : "https://www.youtube.com/embed/HJug1KZSor8?si=-2gWWIlqkEZ7-5wL"
           }
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

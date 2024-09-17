@@ -41,7 +41,7 @@ function Urls({}: Props) {
 
   const handleSave = async () => {
     try {
-      const res = await fetch("https://csen-dz.com/api/layout", {
+      const res = await fetch("/api/layout", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
