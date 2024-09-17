@@ -41,7 +41,7 @@ function Urls({}: Props) {
 
   const handleSave = async () => {
     try {
-      const res = await fetch("/api/layout", {
+      const res = await fetch("https://csen-dz.com/api/layout", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -70,7 +70,6 @@ function Urls({}: Props) {
             className="border border-gray-300 rounded-md py-2"
             name="videoUrl"
             value={formData.videoUrl}
-            
             onChange={handleChange}
           />
         </div>
@@ -103,7 +102,6 @@ function Urls({}: Props) {
         className="bg-primary text-white px-4 py-2 rounded-md w-1/4"
       >
         Save
-        
       </button>
     </div>
   );
