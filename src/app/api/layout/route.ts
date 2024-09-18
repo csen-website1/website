@@ -4,8 +4,6 @@ import { auth } from "@/auth";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
-  
-  
   try {
     await connectToDatabase();
     const Urls = await LayoutModel.find({});
@@ -18,14 +16,22 @@ export async function GET(req: Request) {
   }
 }
 
-export async function PUT(req: Request) {
+export async function PATCH(req: Request) {
   const session = await auth();
   if (!session) {
     return NextResponse.json({ message: "Not authenticated" }, { status: 401 });
   }
   try {
     await connectToDatabase();
-    const data = await req.json();
+    let data;
+    try {
+      data = await req.json();
+    } catch (error) {
+      return NextResponse.json(
+        { message: "Invalid JSON", error: error },
+        { status: 400 }
+      );
+    }
     const updatedUrl = await LayoutModel.findByIdAndUpdate(
       "66e4c30424192e30ed42efb2",
       data,
@@ -33,6 +39,7 @@ export async function PUT(req: Request) {
     );
     return NextResponse.json(updatedUrl);
   } catch (error) {
+    console.error(error);
     return NextResponse.json(
       { message: "Error updating data", error: error },
       { status: 500 }

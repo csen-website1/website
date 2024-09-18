@@ -41,7 +41,7 @@ function Urls({}: Props) {
   const handleSave = async () => {
     try {
       const res = await fetch("/api/layout", {
-        method: "PUT",
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
