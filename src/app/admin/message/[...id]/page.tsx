@@ -7,12 +7,14 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeftIcon, EnvelopeClosedIcon, PersonIcon, HomeIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { User, formatDate, getInitials, getText } from "@/app/admin/types";
+import EmailReplyDialog from "@/components/EmailReplyDialog";
 
 export default function MessageDetailPage({ params }: { params: Promise<{ id: string[] }> }) {
   const resolvedParams = use(params);
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [emailDialogOpen, setEmailDialogOpen] = useState(false);
   const id = resolvedParams.id[0];
 
   useEffect(() => {
@@ -176,11 +178,30 @@ export default function MessageDetailPage({ params }: { params: Promise<{ id: st
 
       {/* Actions */}
       <div className="flex justify-end gap-3">
-        <Button variant="outline" className="gap-2">
+        <Button 
+          variant="outline" 
+          className="gap-2"
+          onClick={() => setEmailDialogOpen(true)}
+        >
           <EnvelopeClosedIcon className="h-4 w-4" />
           Répondre par email
         </Button>
       </div>
+
+      {/* Email Reply Dialog */}
+      {user && (
+        <EmailReplyDialog
+          open={emailDialogOpen}
+          onOpenChange={setEmailDialogOpen}
+          user={{
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            companyName: user.companyName,
+            interest: getText(user.interest),
+          }}
+        />
+      )}
     </div>
   );
 }

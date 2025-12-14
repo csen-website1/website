@@ -10,7 +10,7 @@ export interface User {
   userType: "Agence" | "Société" | "Bureau d'étude" | "Étudiant";
   interest: string;
   companyName?: string;
-  message: string;
+  message: string | { text?: string }[] | string[];
   createdAt: string;
   updatedAt: string;
 }
@@ -88,9 +88,27 @@ export function getInitials(firstName: string, lastName: string): string {
   return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase();
 }
 
-// Safely extract text from fields that might be objects { text, date }
-export function getText(value: string | { text?: string; date?: string } | undefined | null): string {
+// Safely extract text from fields that might be objects { text, date } or arrays
+export function getText(
+  value: string | { text?: string; date?: string } | { text?: string }[] | string[] | undefined | null
+): string {
   if (!value) return "";
   if (typeof value === "string") return value;
+  
+  // Handle array of objects or strings
+  if (Array.isArray(value)) {
+    return value
+      .map((item) => {
+        if (typeof item === "string") return item;
+        if (typeof item === "object" && item !== null) {
+          return item.text || "";
+        }
+        return "";
+      })
+      .filter(Boolean)
+      .join("\n");
+  }
+  
+  // Handle single object
   return value.text || value.date || "";
 }
