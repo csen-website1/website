@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-
-import { auth } from "@/auth";
+import { initializeDefaultAdmin } from "@/lib/auth";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,12 +28,15 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://csen-dz.com"),
 };
+
+// Initialize default admin on first app load
+initializeDefaultAdmin();
+
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const session = await auth();
 
   return (
     <html lang="en" className="h-full scroll-smooth ">

@@ -1,23 +1,18 @@
-import { auth } from "@/auth";
 import Sidebar from "@/components/sidebar";
-import { cn } from "@/lib/utils";
-import { Inter } from "next/font/google";
-import { redirect } from "next/navigation";
-const inter = Inter({ subsets: ["latin"] });
 
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const session = auth();
-  if (!session) redirect("/api/auth/signin");
   return (
-   
-        <div className="px-16">
-          <Sidebar />
-          <div className="flex-grow flex-1">{children}</div>
-        </div>
-     
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
+      <Sidebar />
+      <div className="sm:pl-16">
+        <main className="min-h-[calc(100vh-4rem)] p-4 sm:p-6 lg:p-8">
+          {children}
+        </main>
+      </div>
+    </div>
   );
 }

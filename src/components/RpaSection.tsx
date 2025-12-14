@@ -82,11 +82,11 @@ const RpaSection = (props: Props) => {
     <div className="bg-primary/15 py-16">
       <MaxWidthWraper>
         <motion.div
-          className="flex justify-center items-center"
           variants={item}
           initial="hidden"
           animate={controls}
           ref={ref}
+          className="flex justify-center items-center"
         >
           <img
             className="w-1/2 sm:w-1/4 md:w-1/4 lg:w-1/4 xl:w-1/4 sm:my-10 my-3"

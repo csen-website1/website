@@ -1,13 +1,8 @@
-import { auth } from "@/auth";
 import connectToDatabase from "@/lib/db";
 import Testimonials from "@/models/Testimonials";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  const session = await auth();
-  if (!session) {
-    return NextResponse.json({ message: "Not authenticated" }, { status: 401 });
-  }
   await connectToDatabase();
 
   const data = await req.json();

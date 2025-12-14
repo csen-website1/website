@@ -9,6 +9,8 @@ import { IoMdClose } from "react-icons/io";
 import { buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+
+const MotionLi = motion.create("li");
 import { useOnClickOutside } from "@/hooks/use-on-click-outside";
 import {
   NavigationMenu,
@@ -41,7 +43,7 @@ function Navbar({}: Props) {
         const res = await fetch("/api/layout");
         if (res.ok) {
           const data = await res.json();
-
+          console.log(data);
           setData({
             videoUrl: data[0].videoUrl,
             downloadUrl: data[0].downloadUrl,
@@ -108,7 +110,7 @@ function Navbar({}: Props) {
                 className="absolute flex flex-col top-20 right-0 bg-slate-50 p-5 gap-5 items-center"
               >
                 {links.map((link) => (
-                  <motion.li
+                  <MotionLi
                     whileTap={{ scale: 0.9 }}
                     className="inline-block mx-auto "
                     key={link.name}
@@ -122,7 +124,7 @@ function Navbar({}: Props) {
                     >
                       {link.name}
                     </Link>
-                  </motion.li>
+                  </MotionLi>
                 ))}
                 <li></li>
               </ul>
@@ -192,11 +194,11 @@ function Navbar({}: Props) {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Link href="/contact" legacyBehavior passHref>
-                    <NavigationMenuLink className={"text-black"}>
+                  
+                    <NavigationMenuLink href="/contact" className={"text-black"}>
                       Contact
                     </NavigationMenuLink>
-                  </Link>
+                  
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>

@@ -13,7 +13,7 @@ const AnimatedText = ({ text, duration, className }: Props) => {
   return (
     <>
       <span className="mx-2 text-4xl sm:text-5xl ">
-        {text.split(/(?<=\s|\S)/u).map((char, index) => (
+        {text.split("").map((char, index) => (
           <motion.span
             key={char + "-" + index}
             animate={{
